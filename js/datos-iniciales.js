@@ -32,7 +32,7 @@ const DatosIniciales = {
   ],
 
   actividades: [
-    { id: "act-1", titulo: "Entrevistas tecnicas para egresados de Software", tipo: "Taller", modalidad: "Virtual", fecha: "2026-07-15", lugar: "Enlace virtual", descripcion: "Practica de entrevistas tecnicas.", estado: "Programada", formInscripcion: "https://docs.google.com/forms" },
+    { id: "act-1", titulo: "Entrevistas tecnicas para egresados de Software", tipo: "Taller", modalidad: "Virtual", fecha: "2026-07-15", lugar: "Enlace virtual", descripcion: "Practica de entrevistas tecnicas.", estado: "Programada", formInscripcion: "" },
     { id: "act-2", titulo: "Tendencias en desarrollo web 2026", tipo: "Conversatorio", modalidad: "Presencial", fecha: "2026-07-22", lugar: "Auditorio CENFOTEC", descripcion: "Panel con profesionales de la industria.", estado: "Programada" },
     { id: "act-3", titulo: "Feria de egresados 2025", tipo: "Actividad de extension", modalidad: "Presencial", fecha: "2025-12-05", lugar: "Campus CENFOTEC", descripcion: "Feria anual de egresados.", estado: "Finalizada" }
   ],
@@ -70,7 +70,7 @@ const DatosIniciales = {
 
   /* Version de los datos de ejemplo. Al cambiarla, la proxima vez
      que se abra el sistema se recargan los datos actualizados. */
-  version: "2026-08-4",
+  version: "2026-08-5",
 
   /* Carga las colecciones de ejemplo. Si la version cambio, las
      vuelve a escribir para reflejar los datos mas recientes. */
