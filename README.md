@@ -44,8 +44,6 @@ PROYECTO WEB/
 └── js/                   Logica (validacion, Local Storage, navegacion, por pagina)
 ```
 
-## Tecnologias
-HTML5, CSS3 y JavaScript (ES6). Persistencia con Local Storage del navegador.
 
 ## Notas
 Los datos de ejemplo se cargan la primera vez. Para reiniciarlos, borrar el
