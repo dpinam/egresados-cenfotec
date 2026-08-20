@@ -323,11 +323,11 @@ body.landing { background: #0a0a0b; color: #e9e9ec; }
 .lp-banner {
   position: relative; min-height: 66vh; display: flex; align-items: flex-end;
   background-size: cover; background-position: center; background-attachment: fixed;
-  border-top: 1px solid rgba(255,255,255,.06); border-bottom: 1px solid rgba(255,255,255,.06);
+  background-color: #0a0a0b;
 }
 .lp-banner::after {
   content: ""; position: absolute; inset: 0;
-  background: linear-gradient(180deg, rgba(10,10,11,.20) 0%, rgba(10,10,11,.12) 45%, rgba(10,10,11,.88) 100%);
+  background: linear-gradient(180deg, rgba(16,16,18,.60) 0%, rgba(10,10,11,.20) 34%, rgba(10,10,11,.80) 82%, #0a0a0b 100%);
 }
 .lp-banner .contenedor { position: relative; z-index: 2; padding-top: 80px; padding-bottom: 80px; }
 .lp-banner .lp-kicker { color: #d3dae6; text-transform: uppercase; letter-spacing: .22em; font-size: 0.72rem; font-weight: 600; }
