@@ -1,0 +1,238 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Gestion de mentorias - Comunidad de Egresados CENFOTEC</title>
+  <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+  <div class="app">
+
+    <aside class="menu-lateral" id="barra-lateral"></aside>
+
+    <main class="contenido">
+      <div class="barra-superior">
+        <div>
+          <p class="miga">Inicio / Mentorias</p>
+          <h1>Gestion de mentorias</h1>
+        </div>
+        <div class="usuario">
+          <strong data-usuario-nombre>Julia Castro</strong><br>
+          <span class="texto-ayuda" data-usuario-rol>Bienestar Estudiantil</span>
+        </div>
+      </div>
+
+      <div id="aviso-mentoria" class="aviso"></div>
+
+      <div class="tarjetas">
+        <div class="tarjeta"><h3 id="num-mentores">0</h3><p>Mentores registrados</p></div>
+        <div class="tarjeta"><h3 id="num-pendientes">0</h3><p>Solicitudes pendientes</p></div>
+        <div class="tarjeta"><h3 id="num-activas">0</h3><p>Mentorias activas</p></div>
+        <div class="tarjeta"><h3 id="num-finalizadas">0</h3><p>Mentorias finalizadas</p></div>
+      </div>
+
+      <!-- RF-18: Registro voluntario de mentores -->
+      <div class="panel">
+        <h2>Registrarse como mentor</h2>
+        <form action="#" method="post" id="form-mentor" novalidate>
+          <div class="fila-formulario">
+            <div class="campo">
+              <label for="m-egresado">Egresado <span class="obligatorio">*</span></label>
+              <select id="m-egresado"></select>
+            </div>
+            <div class="campo">
+              <label for="m-area">Area de experiencia <span class="obligatorio">*</span></label>
+              <select id="m-area">
+                <option>Desarrollo de software</option>
+                <option>Ciberseguridad</option>
+                <option>Datos e IA</option>
+                <option>Infraestructura y redes</option>
+              </select>
+            </div>
+          </div>
+          <div class="fila-formulario">
+            <div class="campo">
+              <label for="m-especialidades">Especialidades <span class="obligatorio">*</span></label>
+              <input type="text" id="m-especialidades" placeholder="Ej. Frontend, APIs REST">
+            </div>
+            <div class="campo">
+              <label for="m-experiencia">Anos de experiencia <span class="obligatorio">*</span></label>
+              <input type="number" id="m-experiencia" min="0" max="50" placeholder="3">
+            </div>
+          </div>
+          <div class="fila-formulario">
+            <div class="campo">
+              <label for="m-disponibilidad">Disponibilidad <span class="obligatorio">*</span></label>
+              <input type="text" id="m-disponibilidad" placeholder="Ej. 4 horas / semana">
+            </div>
+          </div>
+          <div class="acciones-formulario">
+            <button type="reset" class="boton boton-secundario">Limpiar</button>
+            <button type="submit" class="boton">Registrarme como mentor</button>
+          </div>
+        </form>
+
+        <table>
+          <thead>
+            <tr>
+              <th>Egresado (mentor)</th>
+              <th>Area de experiencia</th>
+              <th>Especialidades</th>
+              <th>Anos</th>
+              <th>Disponibilidad</th>
+              <th>Estado</th>
+              <th>Acciones</th>
+            </tr>
+          </thead>
+          <tbody id="tabla-mentores"></tbody>
+        </table>
+      </div>
+
+      <!-- RF-19: Solicitud de mentoria -->
+      <div class="panel">
+        <h2>Solicitar mentoria</h2>
+        <form action="#" method="post" id="form-solicitud-nueva" novalidate>
+          <div class="fila-formulario">
+            <div class="campo">
+              <label for="s-solicitante">Solicitante <span class="obligatorio">*</span></label>
+              <select id="s-solicitante"></select>
+            </div>
+            <div class="campo">
+              <label for="s-oportunidad">Oportunidad de mentoria <span class="obligatorio">*</span></label>
+              <input type="text" id="s-oportunidad" placeholder="Ej. Preparacion para entrevistas tecnicas">
+            </div>
+          </div>
+          <div class="fila-formulario">
+            <div class="campo">
+              <label for="s-objetivo">Objetivo de la mentoria <span class="obligatorio">*</span></label>
+              <input type="text" id="s-objetivo" placeholder="Que espera lograr con la mentoria">
+            </div>
+          </div>
+          <div class="fila-formulario">
+            <div class="campo">
+              <label for="s-comentarios">Comentarios adicionales</label>
+              <textarea id="s-comentarios" placeholder="Informacion adicional (opcional)"></textarea>
+            </div>
+          </div>
+          <div class="acciones-formulario">
+            <button type="reset" class="boton boton-secundario">Limpiar</button>
+            <button type="submit" class="boton">Enviar solicitud</button>
+          </div>
+        </form>
+      </div>
+
+      <!-- RF-20: Gestion de solicitudes (asignar o rechazar) -->
+      <div class="panel">
+        <h2>Gestion de solicitudes (Bienestar Estudiantil)</h2>
+        <form action="#" method="post" id="form-asignar" novalidate>
+          <div class="fila-formulario">
+            <div class="campo">
+              <label for="solicitante">Solicitud pendiente <span class="obligatorio">*</span></label>
+              <select id="solicitante"></select>
+            </div>
+            <div class="campo">
+              <label for="oportunidad">Oportunidad</label>
+              <select id="oportunidad" disabled></select>
+            </div>
+          </div>
+          <div class="fila-formulario">
+            <div class="campo">
+              <label for="mentor">Mentor a asignar <span class="obligatorio">*</span></label>
+              <select id="mentor"></select>
+            </div>
+          </div>
+          <div class="acciones-formulario">
+            <button type="button" class="boton boton-peligro" id="btn-rechazar">Rechazar</button>
+            <button type="submit" class="boton">Asignar mentor</button>
+          </div>
+        </form>
+
+        <table>
+          <thead>
+            <tr>
+              <th>Solicitante</th>
+              <th>Objetivo</th>
+              <th>Mentor asignado</th>
+              <th>Fecha</th>
+              <th>Estado</th>
+            </tr>
+          </thead>
+          <tbody id="tabla-solicitudes"></tbody>
+        </table>
+      </div>
+
+      <!-- RF-21 y RF-22: Registro y consulta de mentorias -->
+      <div class="panel">
+        <h2>Registro de mentorias</h2>
+        <form action="#" method="post" id="form-mentoria" novalidate>
+          <div class="fila-formulario">
+            <div class="campo">
+              <label for="mto-mentor">Mentor <span class="obligatorio">*</span></label>
+              <select id="mto-mentor"></select>
+            </div>
+            <div class="campo">
+              <label for="mto-egresado">Egresado <span class="obligatorio">*</span></label>
+              <select id="mto-egresado"></select>
+            </div>
+          </div>
+          <div class="fila-formulario">
+            <div class="campo">
+              <label for="mto-inicio">Fecha de inicio <span class="obligatorio">*</span></label>
+              <input type="date" id="mto-inicio">
+            </div>
+            <div class="campo">
+              <label for="mto-fin">Fecha de finalizacion</label>
+              <input type="date" id="mto-fin">
+            </div>
+          </div>
+          <div class="fila-formulario">
+            <div class="campo">
+              <label for="mto-estado">Estado <span class="obligatorio">*</span></label>
+              <select id="mto-estado">
+                <option>Pendiente</option>
+                <option>Activa</option>
+                <option>Finalizada</option>
+                <option>Cancelada</option>
+              </select>
+            </div>
+          </div>
+          <div class="fila-formulario">
+            <div class="campo">
+              <label for="mto-observaciones">Observaciones</label>
+              <textarea id="mto-observaciones" placeholder="Notas de la mentoria"></textarea>
+            </div>
+          </div>
+          <div class="acciones-formulario">
+            <button type="reset" class="boton boton-secundario">Limpiar</button>
+            <button type="submit" class="boton">Registrar mentoria</button>
+          </div>
+        </form>
+
+        <table>
+          <thead>
+            <tr>
+              <th>Mentor</th>
+              <th>Egresado</th>
+              <th>Inicio</th>
+              <th>Fin</th>
+              <th>Estado</th>
+              <th>Observaciones</th>
+              <th>Acciones</th>
+            </tr>
+          </thead>
+          <tbody id="tabla-mentorias"></tbody>
+        </table>
+      </div>
+
+    </main>
+  </div>
+
+  <script src="js/almacenamiento.js"></script>
+  <script src="js/validaciones.js"></script>
+  <script src="js/datos-iniciales.js"></script>
+  <script src="js/sesion.js"></script>
+  <script src="js/navegacion.js"></script>
+  <script src="js/pagina-mentorias.js"></script>
+</body>
+</html>

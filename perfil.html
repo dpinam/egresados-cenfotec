@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Perfil de egresado - Comunidad de Egresados CENFOTEC</title>
+  <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+  <div class="app">
+
+    <aside class="menu-lateral" id="barra-lateral"></aside>
+
+    <main class="contenido">
+      <div class="barra-superior">
+        <div>
+          <p class="miga">Inicio / Mi perfil</p>
+          <h1>Perfil de egresado</h1>
+        </div>
+        <div class="usuario">
+          <strong data-usuario-nombre>Dylan Pina Moya</strong><br>
+          <span class="texto-ayuda" data-usuario-rol>Egresado</span>
+        </div>
+      </div>
+
+      <div id="aviso-perfil" class="aviso"></div>
+
+      <div class="panel">
+        <h2>Informacion personal</h2>
+        <div class="fila-formulario">
+          <div class="campo">
+            <label for="identificacion">Identificacion</label>
+            <input type="text" id="identificacion" value="1-1234-5678" disabled>
+          </div>
+          <div class="campo">
+            <label for="nombre">Nombre completo</label>
+            <input type="text" id="nombre" value="Dylan Pina Moya" disabled>
+          </div>
+        </div>
+        <div class="fila-formulario">
+          <div class="campo">
+            <label for="correo">Correo personal</label>
+            <input type="email" id="correo" value="dylan.pina@cenfotec.ac.cr">
+          </div>
+          <div class="campo">
+            <label for="telefono">Telefono</label>
+            <input type="tel" id="telefono" value="8888-1234">
+          </div>
+        </div>
+        <p class="texto-ayuda">La identificacion y el nombre son administrados por el Departamento de Registro.</p>
+      </div>
+
+      <div class="panel">
+        <h2>Informacion profesional</h2>
+        <div class="fila-formulario">
+          <div class="campo">
+            <label for="empresa">Empresa actual</label>
+            <input type="text" id="empresa" value="Soluciones Digitales CR">
+          </div>
+          <div class="campo">
+            <label for="puesto">Puesto actual</label>
+            <input type="text" id="puesto" value="Desarrollador de software">
+          </div>
+        </div>
+        <div class="fila-formulario">
+          <div class="campo">
+            <label for="area">Area profesional</label>
+            <select id="area">
+              <option>Desarrollo de software</option>
+              <option>Infraestructura y redes</option>
+              <option>Ciberseguridad</option>
+              <option>Datos e inteligencia artificial</option>
+            </select>
+          </div>
+          <div class="campo">
+            <label for="linkedin">Perfil de LinkedIn</label>
+            <input type="url" id="linkedin" value="https://linkedin.com/in/dylanpina">
+          </div>
+        </div>
+        <div class="fila-formulario">
+          <div class="campo">
+            <label for="portafolio">Portafolio profesional</label>
+            <input type="url" id="portafolio" value="https://dylanpina.dev">
+          </div>
+        </div>
+        <div class="acciones-formulario">
+          <button type="button" class="boton boton-secundario" id="btn-cancelar-perfil">Cancelar</button>
+          <button type="button" class="boton" id="btn-guardar-perfil">Guardar cambios</button>
+        </div>
+      </div>
+
+      <div class="panel">
+        <h2>Titulos obtenidos</h2>
+        <table>
+          <thead>
+            <tr>
+              <th>Titulo</th>
+              <th>Carrera</th>
+              <th>Escuela</th>
+              <th>Ano</th>
+              <th>Estado</th>
+            </tr>
+          </thead>
+          <tbody id="tabla-titulos-perfil"></tbody>
+        </table>
+      </div>
+
+    </main>
+  </div>
+
+  <script src="js/almacenamiento.js"></script>
+  <script src="js/validaciones.js"></script>
+  <script src="js/datos-iniciales.js"></script>
+  <script src="js/sesion.js"></script>
+  <script src="js/navegacion.js"></script>
+  <script src="js/pagina-perfil.js"></script>
+</body>
+</html>

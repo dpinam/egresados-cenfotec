@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Gestion de actividades - Comunidad de Egresados CENFOTEC</title>
+  <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+  <div class="app">
+
+    <aside class="menu-lateral" id="barra-lateral"></aside>
+
+    <main class="contenido">
+      <div class="barra-superior">
+        <div>
+          <p class="miga">Inicio / Actividades</p>
+          <h1>Gestion de actividades</h1>
+        </div>
+        <div class="usuario">
+          <strong data-usuario-nombre>Julia Castro</strong><br>
+          <span class="texto-ayuda" data-usuario-rol>Bienestar Estudiantil</span>
+        </div>
+      </div>
+
+      <div id="aviso-actividad" class="aviso"></div>
+
+      <div class="panel">
+        <h2>Nueva actividad</h2>
+        <form action="#" method="post" id="form-actividad" novalidate>
+          <div class="fila-formulario">
+            <div class="campo">
+              <label for="titulo">Titulo <span class="obligatorio">*</span></label>
+              <input type="text" id="titulo" placeholder="Ej. Taller de entrevistas tecnicas">
+            </div>
+          </div>
+          <div class="fila-formulario">
+            <div class="campo">
+              <label for="tipo">Tipo <span class="obligatorio">*</span></label>
+              <select id="tipo">
+                <option>Charla</option>
+                <option>Taller</option>
+                <option>Conversatorio</option>
+                <option>Mentoria grupal</option>
+                <option>Actividad de extension</option>
+              </select>
+            </div>
+            <div class="campo">
+              <label for="modalidad">Modalidad <span class="obligatorio">*</span></label>
+              <select id="modalidad">
+                <option>Presencial</option>
+                <option>Virtual</option>
+                <option>Hibrida</option>
+              </select>
+            </div>
+          </div>
+          <div class="fila-formulario">
+            <div class="campo">
+              <label for="fecha">Fecha <span class="obligatorio">*</span></label>
+              <input type="date" id="fecha">
+            </div>
+            <div class="campo">
+              <label for="lugar">Lugar o enlace</label>
+              <input type="text" id="lugar" placeholder="Auditorio CENFOTEC / enlace virtual">
+            </div>
+          </div>
+          <div class="fila-formulario">
+            <div class="campo">
+              <label for="desc">Descripcion</label>
+              <textarea id="desc" placeholder="Detalle de la actividad"></textarea>
+            </div>
+          </div>
+          <div class="acciones-formulario">
+            <button type="button" class="boton boton-secundario">Limpiar</button>
+            <button type="submit" class="boton">Publicar actividad</button>
+          </div>
+        </form>
+      </div>
+
+      <div class="panel">
+        <h2>Actividades programadas</h2>
+        <form class="filtros" action="#" method="get" id="filtros-actividades">
+          <div class="campo">
+            <label for="f-modalidad">Modalidad</label>
+            <select id="f-modalidad">
+              <option>Todas</option>
+              <option>Presencial</option>
+              <option>Virtual</option>
+              <option>Hibrida</option>
+            </select>
+          </div>
+          <div class="campo">
+            <label for="f-estado">Estado</label>
+            <select id="f-estado">
+              <option>Todos</option>
+              <option>Programada</option>
+              <option>En curso</option>
+              <option>Finalizada</option>
+            </select>
+          </div>
+          <button type="submit" class="boton">Filtrar</button>
+        </form>
+
+        <table>
+          <thead>
+            <tr>
+              <th>Actividad</th>
+              <th>Tipo</th>
+              <th>Fecha</th>
+              <th>Modalidad</th>
+              <th>Estado</th>
+              <th>Acciones</th>
+            </tr>
+          </thead>
+          <tbody id="tabla-actividades"></tbody>
+        </table>
+        <p class="texto-ayuda">Las actividades se guardan en Local Storage y se mantienen al recargar.</p>
+      </div>
+
+    </main>
+  </div>
+
+  <script src="js/almacenamiento.js"></script>
+  <script src="js/validaciones.js"></script>
+  <script src="js/datos-iniciales.js"></script>
+  <script src="js/sesion.js"></script>
+  <script src="js/navegacion.js"></script>
+  <script src="js/pagina-actividades.js"></script>
+</body>
+</html>

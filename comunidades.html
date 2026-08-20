@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Gestion de comunidades - Comunidad de Egresados CENFOTEC</title>
+  <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+  <div class="app">
+
+    <aside class="menu-lateral" id="barra-lateral"></aside>
+
+    <main class="contenido">
+      <div class="barra-superior">
+        <div>
+          <p class="miga">Inicio / Comunidades profesionales</p>
+          <h1>Gestion de comunidades profesionales</h1>
+        </div>
+        <div class="usuario">
+          <strong data-usuario-nombre>Julia Castro</strong><br>
+          <span class="texto-ayuda" data-usuario-rol>Bienestar Estudiantil</span>
+        </div>
+      </div>
+
+      <div id="aviso-comunidad" class="aviso"></div>
+
+      <div class="panel">
+        <h2>Nueva comunidad profesional</h2>
+        <form action="#" method="post" id="form-comunidad" novalidate>
+          <div class="fila-formulario">
+            <div class="campo">
+              <label for="nombre">Nombre de la comunidad <span class="obligatorio">*</span></label>
+              <input type="text" id="nombre" placeholder="Ej. Comunidad de Desarrollo Web">
+            </div>
+            <div class="campo">
+              <label for="area">Area profesional <span class="obligatorio">*</span></label>
+              <select id="area">
+                <option>Desarrollo de software</option>
+                <option>Ciberseguridad</option>
+                <option>Datos e IA</option>
+                <option>Infraestructura y redes</option>
+              </select>
+            </div>
+          </div>
+          <div class="fila-formulario">
+            <div class="campo">
+              <label for="desc">Descripcion</label>
+              <textarea id="desc" placeholder="Proposito de la comunidad"></textarea>
+            </div>
+          </div>
+          <div class="acciones-formulario">
+            <button type="button" class="boton boton-secundario">Limpiar</button>
+            <button type="submit" class="boton">Crear comunidad</button>
+          </div>
+        </form>
+      </div>
+
+      <div class="panel">
+        <h2>Comunidades activas</h2>
+        <table>
+          <thead>
+            <tr>
+              <th>Comunidad</th>
+              <th>Area</th>
+              <th>Miembros</th>
+              <th>Estado</th>
+              <th>Acciones</th>
+            </tr>
+          </thead>
+          <tbody id="tabla-comunidades"></tbody>
+        </table>
+        <p class="texto-ayuda">Las comunidades se guardan en Local Storage y se mantienen al recargar.</p>
+      </div>
+
+    </main>
+  </div>
+
+  <script src="js/almacenamiento.js"></script>
+  <script src="js/validaciones.js"></script>
+  <script src="js/datos-iniciales.js"></script>
+  <script src="js/sesion.js"></script>
+  <script src="js/navegacion.js"></script>
+  <script src="js/pagina-comunidades.js"></script>
+</body>
+</html>

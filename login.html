@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Iniciar sesion - Comunidad de Egresados CENFOTEC</title>
+  <link rel="stylesheet" href="css/styles.css">
+</head>
+<body class="login-page">
+
+  <main class="contenedor">
+    <div class="caja-login">
+      <div class="marca-login">
+        <img src="assets/img/logo-color-trans.png" alt="Universidad CENFOTEC">
+        <h1>Comunidad de Egresados</h1>
+        <p class="texto-ayuda">Ingresa con tu cuenta institucional</p>
+      </div>
+
+      <form action="#" method="post" id="form-login" novalidate>
+
+        <div class="campo">
+          <label for="nombre">Nombre completo <span class="obligatorio">*</span></label>
+          <input type="text" id="nombre" name="nombre" placeholder="Nombre y apellidos">
+        </div>
+
+        <div class="campo">
+          <label for="rol">Rol de acceso <span class="obligatorio">*</span></label>
+          <select id="rol" name="rol">
+            <option value="registro">Registro</option>
+            <option value="bienestar">Bienestar Estudiantil</option>
+            <option value="egresado">Egresado</option>
+          </select>
+        </div>
+
+        <div class="campo">
+          <label for="correo">Correo institucional <span class="obligatorio">*</span></label>
+          <input type="email" id="correo" name="correo" placeholder="nombre.apellido@cenfotec.ac.cr" required>
+        </div>
+
+        <div class="campo">
+          <label for="clave">Contrasena <span class="obligatorio">*</span></label>
+          <input type="password" id="clave" name="clave" required>
+        </div>
+
+        <p style="text-align:right;margin:0 0 16px"><a href="#" class="texto-ayuda">Olvide mi contrasena</a></p>
+
+        <button type="submit" class="boton" style="width:100%;">Ingresar</button>
+      </form>
+      <p class="texto-ayuda" style="text-align:center;margin-top:18px">
+        <a href="index.html">&larr; Volver a la portada</a>
+      </p>
+    </div>
+  </main>
+
+  <script src="js/almacenamiento.js"></script>
+  <script src="js/validaciones.js"></script>
+  <script src="js/datos-iniciales.js"></script>
+  <script src="js/sesion.js"></script>
+  <script src="js/pagina-login.js"></script>
+</body>
+</html>

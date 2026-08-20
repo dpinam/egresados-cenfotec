@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Gestion de oportunidades laborales - Comunidad de Egresados CENFOTEC</title>
+  <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+  <div class="app">
+
+    <aside class="menu-lateral" id="barra-lateral"></aside>
+
+    <main class="contenido">
+      <div class="barra-superior">
+        <div>
+          <p class="miga">Inicio / Oportunidades laborales</p>
+          <h1>Gestion de oportunidades laborales</h1>
+        </div>
+        <div class="usuario">
+          <strong data-usuario-nombre>Julia Castro</strong><br>
+          <span class="texto-ayuda" data-usuario-rol>Bienestar Estudiantil</span>
+        </div>
+      </div>
+
+      <div id="aviso-oportunidad" class="aviso"></div>
+
+      <div class="panel">
+        <h2>Nueva oportunidad laboral</h2>
+        <form action="#" method="post" id="form-oportunidad" novalidate>
+          <div class="fila-formulario">
+            <div class="campo">
+              <label for="empresa">Empresa <span class="obligatorio">*</span></label>
+              <input type="text" id="empresa" placeholder="Nombre de la empresa">
+            </div>
+            <div class="campo">
+              <label for="puesto">Puesto <span class="obligatorio">*</span></label>
+              <input type="text" id="puesto" placeholder="Ej. Desarrollador Backend Jr.">
+            </div>
+          </div>
+          <div class="fila-formulario">
+            <div class="campo">
+              <label for="area">Area profesional <span class="obligatorio">*</span></label>
+              <select id="area">
+                <option>Desarrollo de software</option>
+                <option>Ciberseguridad</option>
+                <option>Datos e IA</option>
+                <option>Infraestructura y redes</option>
+              </select>
+            </div>
+            <div class="campo">
+              <label for="modalidad">Modalidad <span class="obligatorio">*</span></label>
+              <select id="modalidad">
+                <option>Presencial</option>
+                <option>Remoto</option>
+                <option>Hibrido</option>
+              </select>
+            </div>
+          </div>
+          <div class="fila-formulario">
+            <div class="campo">
+              <label for="ubicacion">Ubicacion <span class="obligatorio">*</span></label>
+              <input type="text" id="ubicacion" placeholder="San Jose, Costa Rica">
+            </div>
+            <div class="campo">
+              <label for="contacto">Correo o enlace de contacto <span class="obligatorio">*</span></label>
+              <input type="text" id="contacto" placeholder="rrhh@empresa.com">
+            </div>
+          </div>
+          <div class="fila-formulario">
+            <div class="campo">
+              <label for="publicacion">Fecha de publicacion <span class="obligatorio">*</span></label>
+              <input type="date" id="publicacion">
+            </div>
+            <div class="campo">
+              <label for="vencimiento">Fecha de vencimiento <span class="obligatorio">*</span></label>
+              <input type="date" id="vencimiento">
+            </div>
+          </div>
+          <div class="fila-formulario">
+            <div class="campo">
+              <label for="descripcion">Descripcion <span class="obligatorio">*</span></label>
+              <textarea id="descripcion" placeholder="Detalle de la oportunidad laboral"></textarea>
+            </div>
+          </div>
+          <div class="fila-formulario">
+            <div class="campo">
+              <label for="estado">Estado <span class="obligatorio">*</span></label>
+              <select id="estado">
+                <option>Publicada</option>
+                <option>Borrador</option>
+                <option>Vencida</option>
+              </select>
+            </div>
+          </div>
+          <div class="acciones-formulario">
+            <button type="button" class="boton boton-secundario">Limpiar</button>
+            <button type="submit" class="boton">Publicar oportunidad</button>
+          </div>
+        </form>
+      </div>
+
+      <div class="panel">
+        <h2>Oportunidades publicadas</h2>
+        <form class="filtros" action="#" method="get" id="filtros-oportunidades">
+          <div class="campo">
+            <label for="f-empresa">Empresa</label>
+            <input type="text" id="f-empresa" placeholder="Buscar por empresa">
+          </div>
+          <div class="campo">
+            <label for="f-area">Area profesional</label>
+            <select id="f-area">
+              <option>Todas</option>
+              <option>Desarrollo de software</option>
+              <option>Ciberseguridad</option>
+            </select>
+          </div>
+          <div class="campo">
+            <label for="f-modalidad">Modalidad</label>
+            <select id="f-modalidad">
+              <option>Todas</option>
+              <option>Presencial</option>
+              <option>Remoto</option>
+              <option>Hibrido</option>
+            </select>
+          </div>
+          <div class="campo">
+            <label for="f-ubicacion">Ubicacion</label>
+            <input type="text" id="f-ubicacion" placeholder="Ciudad o pais">
+          </div>
+          <button type="submit" class="boton">Filtrar</button>
+        </form>
+
+        <table>
+          <thead>
+            <tr>
+              <th>Empresa</th>
+              <th>Puesto</th>
+              <th>Modalidad</th>
+              <th>Ubicacion</th>
+              <th>Vence</th>
+              <th>Estado</th>
+              <th>Acciones</th>
+            </tr>
+          </thead>
+          <tbody id="tabla-oportunidades"></tbody>
+        </table>
+        <p class="texto-ayuda">Las oportunidades se guardan en Local Storage. Use "Ver" para el detalle completo.</p>
+      </div>
+
+      <div class="panel" id="detalle-oportunidad">
+        <h2>Detalle de oportunidad</h2>
+        <p class="texto-ayuda">Seleccione "Ver" en una oportunidad para consultar su informacion completa.</p>
+      </div>
+
+    </main>
+  </div>
+
+  <script src="js/almacenamiento.js"></script>
+  <script src="js/validaciones.js"></script>
+  <script src="js/datos-iniciales.js"></script>
+  <script src="js/sesion.js"></script>
+  <script src="js/navegacion.js"></script>
+  <script src="js/pagina-oportunidades.js"></script>
+</body>
+</html>

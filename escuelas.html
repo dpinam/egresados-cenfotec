@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Gestion de escuelas academicas - Comunidad de Egresados CENFOTEC</title>
+  <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+  <div class="app">
+
+    <aside class="menu-lateral" id="barra-lateral"></aside>
+
+    <main class="contenido">
+      <div class="barra-superior">
+        <div>
+          <p class="miga">Inicio / Escuelas academicas</p>
+          <h1>Gestion de escuelas academicas</h1>
+        </div>
+        <div class="usuario">
+          <strong data-usuario-nombre>Maria Alvarado</strong><br>
+          <span class="texto-ayuda" data-usuario-rol>Registro</span>
+        </div>
+      </div>
+
+      <div id="aviso-escuela" class="aviso"></div>
+
+      <div class="panel">
+        <h2>Nueva escuela academica</h2>
+        <form action="#" method="post" id="form-escuela" novalidate>
+          <div class="fila-formulario">
+            <div class="campo">
+              <label for="nombre">Nombre de la escuela <span class="obligatorio">*</span></label>
+              <input type="text" id="nombre" placeholder="Ej. Escuela de Ingenieria del Software">
+            </div>
+            <div class="campo">
+              <label for="director">Director o directora academica</label>
+              <input type="text" id="director" placeholder="Nombre del director">
+            </div>
+          </div>
+          <div class="fila-formulario">
+            <div class="campo">
+              <label for="desc">Descripcion</label>
+              <textarea id="desc" placeholder="Descripcion breve (opcional)"></textarea>
+            </div>
+          </div>
+          <div class="acciones-formulario">
+            <button type="button" class="boton boton-secundario">Limpiar</button>
+            <button type="submit" class="boton">Guardar escuela</button>
+          </div>
+        </form>
+      </div>
+
+      <div class="panel">
+        <h2>Escuelas registradas</h2>
+        <table>
+          <thead>
+            <tr>
+              <th>Escuela academica</th>
+              <th>Director o directora</th>
+              <th>Carreras asociadas</th>
+              <th>Estado</th>
+              <th>Acciones</th>
+            </tr>
+          </thead>
+          <tbody id="tabla-escuelas"></tbody>
+        </table>
+        <p class="texto-ayuda">La columna Carreras asociadas se calcula desde las carreras registradas. Datos en Local Storage.</p>
+      </div>
+
+    </main>
+  </div>
+
+  <script src="js/almacenamiento.js"></script>
+  <script src="js/validaciones.js"></script>
+  <script src="js/datos-iniciales.js"></script>
+  <script src="js/sesion.js"></script>
+  <script src="js/navegacion.js"></script>
+  <script src="js/pagina-escuelas.js"></script>
+</body>
+</html>

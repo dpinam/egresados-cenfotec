@@ -1,0 +1,9 @@
+# Archivos generados / no versionar
+Avance2-Codigo-Egresados-CENFOTEC.zip
+node_modules/
+*.log
+
+# Sistema operativo
+.DS_Store
+Thumbs.db
+desktop.ini

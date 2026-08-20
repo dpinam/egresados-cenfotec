@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Pagina de inicio - Comunidad de Egresados CENFOTEC</title>
+  <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+  <div class="app">
+
+    <aside class="menu-lateral" id="barra-lateral"></aside>
+
+    <main class="contenido">
+      <div class="barra-superior">
+        <div>
+          <p class="miga">Sistema de Gestion de Egresados</p>
+          <h1>Pagina de inicio</h1>
+        </div>
+        <div class="usuario">
+          <strong data-usuario-nombre>Maria Alvarado</strong><br>
+          <span class="texto-ayuda" data-usuario-rol>Personal de Registro</span>
+        </div>
+      </div>
+
+      <p>Bienvenida al sistema. Desde aqui puedes acceder a las opciones de administracion de egresados y catalogos academicos.</p>
+
+      <h2>Resumen</h2>
+      <div class="tarjetas">
+        <div class="tarjeta">
+          <h3 id="total-egresados">0</h3>
+          <p>Egresados registrados</p>
+        </div>
+        <div class="tarjeta">
+          <h3 id="total-titulos">0</h3>
+          <p>Titulos academicos</p>
+        </div>
+        <div class="tarjeta">
+          <h3 id="total-carreras">0</h3>
+          <p>Carreras activas</p>
+        </div>
+        <div class="tarjeta">
+          <h3 id="total-escuelas">0</h3>
+          <p>Escuelas academicas</p>
+        </div>
+      </div>
+
+      <h2>Accesos rapidos</h2>
+      <div class="tarjetas">
+        <div class="tarjeta">
+          <h3>Registrar egresado</h3>
+          <p>Registro manual o importacion por archivo CSV.</p>
+          <a href="egresados.html">Ir a Gestion de egresados</a>
+        </div>
+        <div class="tarjeta">
+          <h3>Registrar titulo academico</h3>
+          <p>Asociar un titulo a un egresado existente.</p>
+          <a href="titulos.html">Ir a Gestion de titulos</a>
+        </div>
+        <div class="tarjeta">
+          <h3>Administrar carreras</h3>
+          <p>Crear, modificar o eliminar carreras.</p>
+          <a href="carreras.html">Ir a Carreras</a>
+        </div>
+      </div>
+
+    </main>
+  </div>
+
+  <script src="js/almacenamiento.js"></script>
+  <script src="js/validaciones.js"></script>
+  <script src="js/datos-iniciales.js"></script>
+  <script src="js/sesion.js"></script>
+  <script src="js/navegacion.js"></script>
+  <script src="js/pagina-inicio.js"></script>
+</body>
+</html>

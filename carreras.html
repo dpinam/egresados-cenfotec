@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Gestion de carreras - Comunidad de Egresados CENFOTEC</title>
+  <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+  <div class="app">
+
+    <aside class="menu-lateral" id="barra-lateral"></aside>
+
+    <main class="contenido">
+      <div class="barra-superior">
+        <div>
+          <p class="miga">Inicio / Carreras</p>
+          <h1>Gestion de carreras</h1>
+        </div>
+        <div class="usuario">
+          <strong data-usuario-nombre>Maria Alvarado</strong><br>
+          <span class="texto-ayuda" data-usuario-rol>Registro</span>
+        </div>
+      </div>
+
+      <div id="aviso-carrera" class="aviso"></div>
+
+      <div class="panel">
+        <h2>Nueva carrera</h2>
+        <form action="#" method="post" id="form-carrera" novalidate>
+          <div class="fila-formulario">
+            <div class="campo">
+              <label for="nombre">Nombre de la carrera <span class="obligatorio">*</span></label>
+              <input type="text" id="nombre" placeholder="Ej. Ingenieria del Software">
+            </div>
+            <div class="campo">
+              <label for="escuela">Escuela academica <span class="obligatorio">*</span></label>
+              <select id="escuela"></select>
+            </div>
+          </div>
+          <div class="fila-formulario">
+            <div class="campo">
+              <label for="desc">Descripcion</label>
+              <textarea id="desc" placeholder="Descripcion breve (opcional)"></textarea>
+            </div>
+          </div>
+          <div class="acciones-formulario">
+            <button type="button" class="boton boton-secundario">Limpiar</button>
+            <button type="submit" class="boton">Guardar carrera</button>
+          </div>
+        </form>
+      </div>
+
+      <div class="panel">
+        <h2>Carreras registradas</h2>
+        <table>
+          <thead>
+            <tr>
+              <th>Carrera</th>
+              <th>Escuela academica</th>
+              <th>Egresados</th>
+              <th>Estado</th>
+              <th>Acciones</th>
+            </tr>
+          </thead>
+          <tbody id="tabla-carreras"></tbody>
+        </table>
+        <p class="texto-ayuda">La columna Egresados se calcula desde los titulos registrados. Datos en Local Storage.</p>
+      </div>
+
+    </main>
+  </div>
+
+  <script src="js/almacenamiento.js"></script>
+  <script src="js/validaciones.js"></script>
+  <script src="js/datos-iniciales.js"></script>
+  <script src="js/sesion.js"></script>
+  <script src="js/navegacion.js"></script>
+  <script src="js/pagina-carreras.js"></script>
+</body>
+</html>

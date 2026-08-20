@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Gestion de comunicados - Comunidad de Egresados CENFOTEC</title>
+  <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+  <div class="app">
+
+    <aside class="menu-lateral" id="barra-lateral"></aside>
+
+    <main class="contenido">
+      <div class="barra-superior">
+        <div>
+          <p class="miga">Inicio / Comunicados</p>
+          <h1>Gestion de comunicados institucionales</h1>
+        </div>
+        <div class="usuario">
+          <strong data-usuario-nombre>Julia Castro</strong><br>
+          <span class="texto-ayuda" data-usuario-rol>Bienestar Estudiantil</span>
+        </div>
+      </div>
+
+      <div id="aviso-comunicado" class="aviso"></div>
+
+      <div class="panel">
+        <h2>Nuevo comunicado</h2>
+        <form action="#" method="post" id="form-comunicado" novalidate>
+          <div class="fila-formulario">
+            <div class="campo">
+              <label for="titulo">Titulo <span class="obligatorio">*</span></label>
+              <input type="text" id="titulo" placeholder="Ej. Apertura de convocatoria de mentores">
+            </div>
+          </div>
+          <div class="fila-formulario">
+            <div class="campo">
+              <label for="categoria">Categoria <span class="obligatorio">*</span></label>
+              <select id="categoria">
+                <option>Institucional</option>
+                <option>Registro</option>
+                <option>Bienestar Estudiantil</option>
+                <option>Empleabilidad</option>
+              </select>
+            </div>
+            <div class="campo">
+              <label for="audiencia">Audiencia <span class="obligatorio">*</span></label>
+              <select id="audiencia">
+                <option>Todos los egresados</option>
+                <option>Por carrera</option>
+                <option>Por escuela</option>
+                <option>Mentores</option>
+              </select>
+            </div>
+          </div>
+          <div class="fila-formulario">
+            <div class="campo">
+              <label for="contenido">Contenido <span class="obligatorio">*</span></label>
+              <textarea id="contenido" placeholder="Redacte el contenido del comunicado" style="min-height:120px;"></textarea>
+            </div>
+          </div>
+          <div class="acciones-formulario">
+            <button type="button" class="boton boton-secundario" id="btn-borrador">Guardar borrador</button>
+            <button type="submit" class="boton">Publicar comunicado</button>
+          </div>
+        </form>
+      </div>
+
+      <div class="panel">
+        <h2>Comunicados publicados</h2>
+        <table>
+          <thead>
+            <tr>
+              <th>Titulo</th>
+              <th>Categoria</th>
+              <th>Audiencia</th>
+              <th>Fecha</th>
+              <th>Estado</th>
+              <th>Acciones</th>
+            </tr>
+          </thead>
+          <tbody id="tabla-comunicados"></tbody>
+        </table>
+        <p class="texto-ayuda">Los comunicados se guardan en Local Storage. Puede publicarlos o dejarlos como borrador.</p>
+      </div>
+
+    </main>
+  </div>
+
+  <script src="js/almacenamiento.js"></script>
+  <script src="js/validaciones.js"></script>
+  <script src="js/datos-iniciales.js"></script>
+  <script src="js/sesion.js"></script>
+  <script src="js/navegacion.js"></script>
+  <script src="js/pagina-comunicados.js"></script>
+</body>
+</html>

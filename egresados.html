@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Gestion de egresados - Comunidad de Egresados CENFOTEC</title>
+  <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+  <div class="app">
+
+    <aside class="menu-lateral" id="barra-lateral"></aside>
+
+    <main class="contenido">
+      <div class="barra-superior">
+        <div>
+          <p class="miga">Inicio / Egresados</p>
+          <h1>Gestion de egresados</h1>
+        </div>
+        <div class="usuario">
+          <strong data-usuario-nombre>Maria Alvarado</strong><br>
+          <span class="texto-ayuda" data-usuario-rol>Registro</span>
+        </div>
+      </div>
+
+      <div id="aviso-egresado" class="aviso"></div>
+
+      <div class="panel">
+        <h2>Registrar egresado manualmente</h2>
+        <form action="#" method="post" id="form-egresado" novalidate>
+          <div class="fila-formulario">
+            <div class="campo">
+              <label for="ident">Identificacion <span class="obligatorio">*</span></label>
+              <input type="text" id="ident" placeholder="1-1234-5678">
+            </div>
+            <div class="campo">
+              <label for="nombre">Nombre completo <span class="obligatorio">*</span></label>
+              <input type="text" id="nombre" placeholder="Nombre y apellidos">
+            </div>
+          </div>
+          <div class="fila-formulario">
+            <div class="campo">
+              <label for="correo">Correo electronico <span class="obligatorio">*</span></label>
+              <input type="email" id="correo" placeholder="correo@ejemplo.com">
+            </div>
+            <div class="campo">
+              <label for="telefono">Telefono <span class="obligatorio">*</span></label>
+              <input type="tel" id="telefono" placeholder="8888-0000">
+            </div>
+          </div>
+          <div class="fila-formulario">
+            <div class="campo">
+              <label for="fecha">Fecha de registro <span class="obligatorio">*</span></label>
+              <input type="date" id="fecha">
+            </div>
+            <div class="campo">
+              <label for="trabajo">Lugares de trabajo</label>
+              <input type="text" id="trabajo" placeholder="Empresa(s) donde labora (opcional)">
+            </div>
+          </div>
+          <div class="acciones-formulario">
+            <button type="button" class="boton boton-secundario">Limpiar</button>
+            <button type="submit" class="boton">Registrar egresado</button>
+          </div>
+        </form>
+      </div>
+
+      <div class="panel">
+        <h2>Importacion masiva mediante CSV</h2>
+        <div class="zona-subida">
+          <p>Selecciona un archivo .csv con los egresados a importar.</p>
+          <input type="file" accept=".csv" id="archivo-csv">
+        </div>
+        <p class="texto-ayuda">El sistema valida el formato del archivo, los campos obligatorios y los registros duplicados. Columnas: identificacion, nombre, correo, telefono, fecharegistro, empresa.</p>
+        <div class="acciones-formulario">
+          <a href="#" class="boton boton-secundario boton-pequeno" id="btn-plantilla">Descargar plantilla</a>
+          <button type="button" class="boton" id="btn-importar">Procesar importacion</button>
+        </div>
+      </div>
+
+      <div class="panel">
+        <h2>Egresados registrados</h2>
+        <form class="filtros" action="#" method="get" id="filtros-egresados">
+          <div class="campo">
+            <label for="f-nombre">Nombre</label>
+            <input type="text" id="f-nombre" placeholder="Buscar por nombre">
+          </div>
+          <div class="campo">
+            <label for="f-carrera">Carrera</label>
+            <select id="f-carrera">
+              <option>Todas</option>
+              <option>Ingenieria del Software</option>
+              <option>Ciberseguridad</option>
+              <option>Redes y Telecomunicaciones</option>
+            </select>
+          </div>
+          <div class="campo">
+            <label for="f-escuela">Escuela</label>
+            <select id="f-escuela">
+              <option>Todas</option>
+              <option>Escuela de Ingenieria del Software</option>
+              <option>Escuela de Computacion</option>
+            </select>
+          </div>
+          <div class="campo">
+            <label for="f-tipo">Tipo de programa</label>
+            <select id="f-tipo">
+              <option>Todos</option>
+              <option>Tecnico</option>
+              <option>Bachillerato</option>
+              <option>Maestria</option>
+            </select>
+          </div>
+          <div class="campo">
+            <label for="f-anio">Ano de graduacion</label>
+            <input type="number" id="f-anio" placeholder="2026">
+          </div>
+          <button type="submit" class="boton">Filtrar</button>
+        </form>
+
+        <table>
+          <thead>
+            <tr>
+              <th>Identificacion</th>
+              <th>Nombre</th>
+              <th>Correo</th>
+              <th>Carrera</th>
+              <th>Ano</th>
+              <th>Estado</th>
+              <th>Acciones</th>
+            </tr>
+          </thead>
+          <tbody id="tabla-egresados"></tbody>
+        </table>
+        <p class="texto-ayuda">Los egresados se guardan en Local Storage y se mantienen al recargar la pagina.</p>
+      </div>
+
+    </main>
+  </div>
+
+  <script src="js/almacenamiento.js"></script>
+  <script src="js/validaciones.js"></script>
+  <script src="js/datos-iniciales.js"></script>
+  <script src="js/sesion.js"></script>
+  <script src="js/navegacion.js"></script>
+  <script src="js/pagina-egresados.js"></script>
+</body>
+</html>
