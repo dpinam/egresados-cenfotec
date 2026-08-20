@@ -12,6 +12,8 @@ document.addEventListener("DOMContentLoaded", () => {
 
   const sesion = (typeof Sesion !== "undefined") ? Sesion.actual() : null;
   const esAdmin = !!sesion && (sesion.rol === "Registro" || sesion.rol === "Bienestar Estudiantil");
+  const esBienestar = !!sesion && sesion.rol === "Bienestar Estudiantil";
+  function urlValida(v) { return /^https?:\/\/.+/i.test((v || "").trim()); }
 
   /* ---------- Encabezado al hacer scroll ---------- */
   const header = document.getElementById("lp-header");
@@ -132,6 +134,52 @@ document.addEventListener("DOMContentLoaded", () => {
     document.getElementById("o-cerrar").addEventListener("click", cerrarModal);
   }
 
+  /* ---------- Modal: aviso simple ---------- */
+  function modalMensaje(titulo, texto) {
+    abrirModal(
+      "<h3>" + titulo + "</h3>" +
+      '<p class="modal-sub">' + texto + "</p>" +
+      '<div class="modal-acciones"><button type="button" class="lp-btn lp-btn-claro" id="m-cerrar">Entendido</button></div>'
+    );
+    document.getElementById("m-cerrar").addEventListener("click", cerrarModal);
+  }
+
+  /* ---------- Modal: Bienestar configura el link de inscripcion ---------- */
+  function modalConfigInscripcion(actividad) {
+    abrirModal(
+      '<span class="lp-tag">' + actividad.tipo + "</span>" +
+      "<h3>" + actividad.titulo + "</h3>" +
+      '<p class="modal-sub">Pega el enlace del formulario de inscripcion (Google Forms u otro). Los egresados lo abriran al tocar "Inscribirse aqui".</p>' +
+      '<form id="form-inscripcion">' +
+        '<label for="i-link">Enlace del formulario</label>' +
+        '<input type="url" id="i-link" placeholder="https://forms.gle/..." value="' + (actividad.formInscripcion || "") + '">' +
+        '<div class="modal-error" id="i-error">Ingresa un enlace valido (http:// o https://).</div>' +
+        '<div class="modal-acciones">' +
+          (actividad.formInscripcion ? '<a class="lp-btn lp-btn-linea" href="' + actividad.formInscripcion + '" target="_blank" rel="noopener">Abrir formulario</a>' : "") +
+          '<button type="submit" class="lp-btn lp-btn-claro">Guardar enlace</button>' +
+        "</div>" +
+      "</form>"
+    );
+    document.getElementById("form-inscripcion").addEventListener("submit", (e) => {
+      e.preventDefault();
+      const link = document.getElementById("i-link").value.trim();
+      const err = document.getElementById("i-error");
+      if (!urlValida(link)) { err.classList.add("visible"); return; }
+      Almacenamiento.actualizar(CLAVES.actividades, actividad.id, { formInscripcion: link });
+      abrirModal(
+        '<div class="modal-ok">' +
+          '<div class="check">&#10003;</div>' +
+          "<h3>Enlace guardado</h3>" +
+          '<p class="modal-sub">Los egresados ya pueden inscribirse a "' + actividad.titulo + '".</p>' +
+          '<div class="modal-acciones" style="justify-content:center">' +
+            '<button type="button" class="lp-btn lp-btn-claro" id="ok-cerrar2">Listo</button>' +
+          "</div>" +
+        "</div>"
+      );
+      document.getElementById("ok-cerrar2").addEventListener("click", cerrarModal);
+    });
+  }
+
   /* ============================================================
      RENDER de las secciones dinamicas
      ============================================================ */
@@ -193,7 +241,7 @@ document.addEventListener("DOMContentLoaded", () => {
       "</a>").join("") : vacio("Pronto se abriran nuevas comunidades.");
   }
 
-  /* Actividades */
+  /* Actividades (con boton de inscripcion) */
   const cAct = document.getElementById("lp-actividades");
   if (cAct) {
     const lista = Almacenamiento.obtener(CLAVES.actividades).filter(a => a.estado === "Programada")
@@ -204,7 +252,22 @@ document.addEventListener("DOMContentLoaded", () => {
         "<h3>" + a.titulo + "</h3>" +
         "<p>" + a.descripcion + "</p>" +
         '<div class="lp-meta">' + fechaLegible(a.fecha) + " &middot; " + a.modalidad + "</div>" +
+        '<button type="button" class="lp-card-accion" data-inscribir="' + a.id + '">' +
+          (esBienestar ? "Configurar inscripcion &rarr;" : "Inscribirse aqui &rarr;") + "</button>" +
       "</div>").join("") : vacio("No hay actividades programadas por ahora.");
+
+    cAct.addEventListener("click", (e) => {
+      const btn = e.target.closest("[data-inscribir]"); if (!btn) { return; }
+      const a = Almacenamiento.obtener(CLAVES.actividades).find(x => x.id === btn.dataset.inscribir);
+      if (!a) { return; }
+      if (esBienestar) {
+        modalConfigInscripcion(a);
+      } else if (a.formInscripcion) {
+        window.open(a.formInscripcion, "_blank", "noopener");
+      } else {
+        modalMensaje("Inscripciones no disponibles", "Todavia no hay un formulario de inscripcion para esta actividad. Vuelve pronto.");
+      }
+    });
   }
 
   /* Comunicados */

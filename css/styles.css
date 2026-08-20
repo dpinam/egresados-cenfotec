@@ -354,10 +354,11 @@ body.landing { background: #0a0a0b; color: #e9e9ec; }
 .lp-card.clickable { cursor: pointer; }
 .lp-card-accion {
   display: inline-flex; align-items: center; gap: 6px; margin-top: 16px;
-  font-size: 0.84rem; font-weight: 600; color: #fff;
+  font-size: 0.84rem; font-weight: 600; color: #fff; font-family: inherit;
   padding: 8px 14px; border: 1px solid rgba(255,255,255,.22); border-radius: 8px;
-  background: rgba(255,255,255,.04); transition: all .15s ease;
+  background: rgba(255,255,255,.04); transition: all .15s ease; cursor: pointer;
 }
+.lp-card-accion:hover { border-color: rgba(255,255,255,.5); background: rgba(255,255,255,.10); }
 .lp-card:hover .lp-card-accion { border-color: rgba(255,255,255,.5); background: rgba(255,255,255,.10); }
 .lp-avatar {
   width: 46px; height: 46px; border-radius: 50%; background: #23232a; color: #fff;
