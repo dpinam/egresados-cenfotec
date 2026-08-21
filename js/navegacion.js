@@ -80,4 +80,26 @@ document.addEventListener("DOMContentLoaded", () => {
       window.location.href = "index.html";
     });
   }
+
+  /* Para el egresado (solo lectura): las paginas de solo informacion no tienen
+     acciones en la tabla, asi que tocar una fila lo lleva a la portada,
+     a la seccion donde estan los paneles con la informacion. */
+  if (rol === "Egresado") {
+    const soloInfo = {
+      "comunidades.html": { tabla: "tabla-comunidades", seccion: "comunidad" },
+      "actividades.html": { tabla: "tabla-actividades", seccion: "actividades" },
+      "comunicados.html": { tabla: "tabla-comunicados", seccion: "comunicados" }
+    };
+    const cfg = soloInfo[paginaActual];
+    if (cfg) {
+      const tabla = document.getElementById(cfg.tabla);
+      if (tabla) {
+        tabla.style.cursor = "pointer";
+        tabla.title = "Ver la informacion en la portada";
+        tabla.addEventListener("click", () => {
+          window.location.href = "index.html#" + cfg.seccion;
+        });
+      }
+    }
+  }
 });
