@@ -50,7 +50,7 @@ document.addEventListener("DOMContentLoaded", () => {
     let ok = true;
     const titulo = document.getElementById("titulo").value;
     const contenido = document.getElementById("contenido").value;
-    if (!Validar.requerido(titulo)) { Mensajes.mostrarError("titulo", "El titulo es obligatorio."); ok = false; }
+    if (!Validar.requerido(titulo)) { Mensajes.mostrarError("titulo", "El título es obligatorio."); ok = false; }
     if (!Validar.requerido(contenido)) { Mensajes.mostrarError("contenido", "El contenido es obligatorio."); ok = false; }
     return ok;
   }

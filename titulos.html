@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Gestion de titulos academicos - Comunidad de Egresados CENFOTEC</title>
+  <title>Gestión de títulos académicos - Comunidad de Egresados CENFOTEC</title>
   <link rel="stylesheet" href="css/styles.css">
 </head>
 <body>
@@ -14,11 +14,11 @@
     <main class="contenido">
       <div class="barra-superior">
         <div>
-          <p class="miga">Inicio / Titulos academicos</p>
-          <h1>Gestion de titulos academicos</h1>
+          <p class="miga">Inicio / Títulos académicos</p>
+          <h1>Gestión de títulos académicos</h1>
         </div>
         <div class="usuario">
-          <strong data-usuario-nombre>Maria Alvarado</strong><br>
+          <strong data-usuario-nombre>María Alvarado</strong><br>
           <span class="texto-ayuda" data-usuario-rol>Registro</span>
         </div>
       </div>
@@ -26,7 +26,7 @@
       <div id="aviso-titulo" class="aviso"></div>
 
       <div class="panel">
-        <h2>Registrar titulo academico</h2>
+        <h2>Registrar título académico</h2>
         <form action="#" method="post" id="form-titulo" novalidate>
           <div class="fila-formulario">
             <div class="campo">
@@ -38,9 +38,9 @@
             <div class="campo">
               <label for="tipo">Tipo de programa <span class="obligatorio">*</span></label>
               <select id="tipo">
-                <option>Tecnico</option>
+                <option>Técnico</option>
                 <option>Bachillerato</option>
-                <option>Maestria</option>
+                <option>Maestría</option>
               </select>
             </div>
             <div class="campo">
@@ -50,45 +50,45 @@
           </div>
           <div class="fila-formulario">
             <div class="campo">
-              <label for="escuela">Escuela academica <span class="obligatorio">*</span></label>
+              <label for="escuela">Escuela académica <span class="obligatorio">*</span></label>
               <select id="escuela"></select>
             </div>
             <div class="campo">
-              <label for="anio">Ano de graduacion <span class="obligatorio">*</span></label>
+              <label for="anio">Año de graduación <span class="obligatorio">*</span></label>
               <input type="number" id="anio" placeholder="2026" min="1990" max="2026">
             </div>
           </div>
           <div class="fila-formulario">
             <div class="campo">
-              <label for="estado">Estado del titulo <span class="obligatorio">*</span></label>
+              <label for="estado">Estado del título <span class="obligatorio">*</span></label>
               <select id="estado">
                 <option>Graduado</option>
-                <option>En tramite</option>
+                <option>En trámite</option>
                 <option>Suspendido</option>
               </select>
             </div>
           </div>
           <div class="acciones-formulario">
             <button type="button" class="boton boton-secundario">Limpiar</button>
-            <button type="submit" class="boton">Guardar titulo</button>
+            <button type="submit" class="boton">Guardar título</button>
           </div>
         </form>
       </div>
 
       <div class="panel">
-        <h2>Titulos registrados</h2>
+        <h2>Títulos registrados</h2>
         <form class="filtros" action="#" method="get" id="filtros-titulos">
           <div class="campo">
             <label for="f-egresado">Egresado</label>
-            <input type="text" id="f-egresado" placeholder="Nombre o identificacion">
+            <input type="text" id="f-egresado" placeholder="Nombre o identificación">
           </div>
           <div class="campo">
             <label for="f-tipo">Tipo de programa</label>
             <select id="f-tipo">
               <option>Todos</option>
-              <option>Tecnico</option>
+              <option>Técnico</option>
               <option>Bachillerato</option>
-              <option>Maestria</option>
+              <option>Maestría</option>
             </select>
           </div>
           <div class="campo">
@@ -96,7 +96,7 @@
             <select id="f-estado">
               <option>Todos</option>
               <option>Graduado</option>
-              <option>En tramite</option>
+              <option>En trámite</option>
               <option>Suspendido</option>
             </select>
           </div>
@@ -110,14 +110,14 @@
               <th>Tipo</th>
               <th>Carrera</th>
               <th>Escuela</th>
-              <th>Ano</th>
+              <th>Año</th>
               <th>Estado</th>
               <th>Acciones</th>
             </tr>
           </thead>
           <tbody id="tabla-titulos"></tbody>
         </table>
-        <p class="texto-ayuda">Un mismo egresado puede tener varios titulos. Los datos se guardan en Local Storage.</p>
+        <p class="texto-ayuda">Un mismo egresado puede tener varios títulos. Los datos se guardan en Local Storage.</p>
       </div>
 
     </main>

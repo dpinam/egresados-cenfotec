@@ -57,7 +57,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
     const titulo = document.getElementById("titulo").value;
     const fecha = document.getElementById("fecha").value;
-    if (!Validar.requerido(titulo)) { Mensajes.mostrarError("titulo", "El titulo es obligatorio."); ok = false; }
+    if (!Validar.requerido(titulo)) { Mensajes.mostrarError("titulo", "El título es obligatorio."); ok = false; }
     if (!Validar.requerido(fecha)) { Mensajes.mostrarError("fecha", "Seleccione la fecha."); ok = false; }
     if (!ok) { return; }
 

@@ -54,7 +54,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
   function claseEstado(estado) {
     if (estado === "Graduado") { return "estado-exito"; }
-    if (estado === "En tramite") { return "estado-alerta"; }
+    if (estado === "En trámite") { return "estado-alerta"; }
     return "estado-error";
   }
 
@@ -90,11 +90,11 @@ document.addEventListener("DOMContentLoaded", () => {
     let ok = true;
     const anio = document.getElementById("anio").value;
     if (Almacenamiento.obtener(CLAVES.egresados).length === 0) {
-      Mensajes.aviso("aviso-titulo", "Primero registre egresados antes de asignar titulos.", "error");
+      Mensajes.aviso("aviso-titulo", "Primero registre egresados antes de asignar títulos.", "error");
       ok = false;
     }
     if (!Validar.anio(anio)) {
-      Mensajes.mostrarError("anio", "Ingrese un ano valido (1990-2026).");
+      Mensajes.mostrarError("anio", "Ingrese un año válido (1990-2026).");
       ok = false;
     }
     return ok;
@@ -115,13 +115,13 @@ document.addEventListener("DOMContentLoaded", () => {
 
     if (idEnEdicion) {
       Almacenamiento.actualizar(CLAVES.titulos, idEnEdicion, datos);
-      Mensajes.aviso("aviso-titulo", "Titulo actualizado correctamente.", "exito");
+      Mensajes.aviso("aviso-titulo", "Título actualizado correctamente.", "exito");
       idEnEdicion = null;
-      formulario.querySelector("button[type=submit]").textContent = "Guardar titulo";
+      formulario.querySelector("button[type=submit]").textContent = "Guardar título";
     } else {
       datos.id = Almacenamiento.generarId();
       Almacenamiento.agregar(CLAVES.titulos, datos);
-      Mensajes.aviso("aviso-titulo", "Titulo registrado correctamente.", "exito");
+      Mensajes.aviso("aviso-titulo", "Título registrado correctamente.", "exito");
     }
     formulario.reset();
     refrescar();
@@ -148,9 +148,9 @@ document.addEventListener("DOMContentLoaded", () => {
 
     if (eliminar) {
       evento.preventDefault();
-      if (confirm("Desea eliminar este titulo?")) {
+      if (confirm("Desea eliminar este título?")) {
         Almacenamiento.eliminar(CLAVES.titulos, eliminar);
-        Mensajes.aviso("aviso-titulo", "Titulo eliminado.", "exito");
+        Mensajes.aviso("aviso-titulo", "Título eliminado.", "exito");
         refrescar();
       }
     }
@@ -161,7 +161,7 @@ document.addEventListener("DOMContentLoaded", () => {
   formulario.addEventListener("reset", () => {
     Mensajes.limpiarTodos(formulario);
     idEnEdicion = null;
-    formulario.querySelector("button[type=submit]").textContent = "Guardar titulo";
+    formulario.querySelector("button[type=submit]").textContent = "Guardar título";
   });
 
   /* Filtros: egresado (texto), tipo y estado. */

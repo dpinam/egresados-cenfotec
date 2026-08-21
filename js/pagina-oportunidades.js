@@ -60,7 +60,7 @@ document.addEventListener("DOMContentLoaded", () => {
       "<h3>" + o.puesto + " - " + o.empresa + "</h3>" +
       '<p class="texto-ayuda">' + o.modalidad + " - " + o.ubicacion +
         " - Publicada el " + fechaLegible(o.publicacion) + " - Vence el " + fechaLegible(o.vencimiento) + "</p>" +
-      "<p>" + (o.descripcion || "Sin descripcion.") + "</p>" +
+      "<p>" + (o.descripcion || "Sin descripción.") + "</p>" +
       '<p class="texto-ayuda">Contacto: ' + o.contacto + "</p>";
     panel.scrollIntoView({ behavior: "smooth" });
   }
@@ -80,15 +80,15 @@ document.addEventListener("DOMContentLoaded", () => {
 
     if (!Validar.requerido(empresa)) { Mensajes.mostrarError("empresa", "La empresa es obligatoria."); ok = false; }
     if (!Validar.requerido(puesto)) { Mensajes.mostrarError("puesto", "El puesto es obligatorio."); ok = false; }
-    if (!Validar.requerido(ubicacion)) { Mensajes.mostrarError("ubicacion", "La ubicacion es obligatoria."); ok = false; }
+    if (!Validar.requerido(ubicacion)) { Mensajes.mostrarError("ubicacion", "La ubicación es obligatoria."); ok = false; }
     if (!Validar.requerido(contacto)) { Mensajes.mostrarError("contacto", "Indique un correo o enlace de contacto."); ok = false; }
-    if (!Validar.requerido(publicacion)) { Mensajes.mostrarError("publicacion", "Seleccione la fecha de publicacion."); ok = false; }
+    if (!Validar.requerido(publicacion)) { Mensajes.mostrarError("publicacion", "Seleccione la fecha de publicación."); ok = false; }
     if (!Validar.requerido(vencimiento)) { Mensajes.mostrarError("vencimiento", "Seleccione la fecha de vencimiento."); ok = false; }
-    if (!Validar.requerido(descripcion)) { Mensajes.mostrarError("descripcion", "La descripcion es obligatoria."); ok = false; }
+    if (!Validar.requerido(descripcion)) { Mensajes.mostrarError("descripcion", "La descripción es obligatoria."); ok = false; }
 
     /* La fecha de vencimiento no puede ser anterior a la de publicacion. */
     if (ok && vencimiento < publicacion) {
-      Mensajes.mostrarError("vencimiento", "El vencimiento no puede ser anterior a la publicacion.");
+      Mensajes.mostrarError("vencimiento", "El vencimiento no puede ser anterior a la publicación.");
       ok = false;
     }
     if (!ok) { return; }

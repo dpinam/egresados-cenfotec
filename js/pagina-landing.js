@@ -66,7 +66,7 @@ document.addEventListener("DOMContentLoaded", () => {
     abrirModal(
       '<div class="lp-avatar">' + iniciales(mentor.egresado) + "</div>" +
       "<h3>" + mentor.egresado + "</h3>" +
-      '<p class="modal-sub">' + mentor.area + " &middot; " + mentor.experiencia + " anos de experiencia</p>" +
+      '<p class="modal-sub">' + mentor.area + " &middot; " + mentor.experiencia + " años de experiencia</p>" +
       '<p class="modal-dato"><strong>Especialidades:</strong> ' + mentor.especialidades + "</p>" +
       '<p class="modal-dato"><strong>Disponibilidad:</strong> ' + mentor.disponibilidad + "</p>" +
       '<form id="form-contacto">' +
@@ -75,8 +75,8 @@ document.addEventListener("DOMContentLoaded", () => {
         '<label for="c-correo">Tu correo</label>' +
         '<input type="email" id="c-correo" placeholder="tucorreo@ejemplo.com">' +
         '<label for="c-mensaje">Mensaje para el mentor</label>' +
-        '<textarea id="c-mensaje" placeholder="Contale que te gustaria aprender..."></textarea>' +
-        '<div class="modal-error" id="c-error">Completa todos los campos con datos validos.</div>' +
+        '<textarea id="c-mensaje" placeholder="Contale que te gustaría aprender..."></textarea>' +
+        '<div class="modal-error" id="c-error">Completa todos los campos con datos válidos.</div>' +
         '<div class="modal-acciones">' +
           '<button type="button" class="lp-btn lp-btn-linea" id="c-cerrar">Cancelar</button>' +
           '<button type="submit" class="lp-btn lp-btn-claro">Enviar mensaje</button>' +
@@ -106,7 +106,7 @@ document.addEventListener("DOMContentLoaded", () => {
         '<div class="modal-ok">' +
           '<div class="check">&#10003;</div>' +
           "<h3>Mensaje enviado</h3>" +
-          '<p class="modal-sub">Tu mensaje fue enviado a ' + mentor.egresado + ". Te respondera a " + correo + ".</p>" +
+          '<p class="modal-sub">Tu mensaje fue enviado a ' + mentor.egresado + ". Te responderá a " + correo + ".</p>" +
           '<div class="modal-acciones" style="justify-content:center">' +
             '<button type="button" class="lp-btn lp-btn-claro" id="ok-cerrar">Listo</button>' +
           "</div>" +
@@ -149,7 +149,7 @@ document.addEventListener("DOMContentLoaded", () => {
     abrirModal(
       '<span class="lp-tag">' + actividad.tipo + "</span>" +
       "<h3>" + actividad.titulo + "</h3>" +
-      '<p class="modal-sub">Pega el enlace del formulario de inscripcion (Google Forms u otro). Los egresados lo abriran al tocar "Inscribirse aqui".</p>' +
+      '<p class="modal-sub">Pega el enlace del formulario de inscripcion (Google Forms u otro). Los egresados lo abriran al tocar "Inscribirse aquí".</p>' +
       '<form id="form-inscripcion">' +
         '<label for="i-link">Enlace del formulario</label>' +
         '<input type="url" id="i-link" placeholder="https://forms.gle/..." value="' + (actividad.formInscripcion || "") + '">' +
@@ -170,7 +170,7 @@ document.addEventListener("DOMContentLoaded", () => {
         '<div class="modal-ok">' +
           '<div class="check">&#10003;</div>' +
           "<h3>Enlace guardado</h3>" +
-          '<p class="modal-sub">Los egresados ya pueden inscribirse a "' + actividad.titulo + '".</p>' +
+          '<p class="modal-sub">Los egresados ya pueden inscribirse a "' + actividad.título + '".</p>' +
           '<div class="modal-acciones" style="justify-content:center">' +
             '<button type="button" class="lp-btn lp-btn-claro" id="ok-cerrar2">Listo</button>' +
           "</div>" +
@@ -215,7 +215,7 @@ document.addEventListener("DOMContentLoaded", () => {
         '<span class="lp-tag">' + m.area + "</span>" +
         "<h3>" + m.egresado + "</h3>" +
         "<p>" + m.especialidades + "</p>" +
-        '<div class="lp-meta">' + m.experiencia + " anos &middot; " + m.disponibilidad + "</div>" +
+        '<div class="lp-meta">' + m.experiencia + " años &middot; " + m.disponibilidad + "</div>" +
         '<span class="lp-card-accion">' + (esAdmin ? "Gestionar &rarr;" : "Contactar mentor &rarr;") + "</span>" +
       "</div>").join("") : vacio("Aun no hay mentores registrados.");
 
@@ -253,7 +253,7 @@ document.addEventListener("DOMContentLoaded", () => {
         "<p>" + a.descripcion + "</p>" +
         '<div class="lp-meta">' + fechaLegible(a.fecha) + " &middot; " + a.modalidad + "</div>" +
         '<button type="button" class="lp-card-accion" data-inscribir="' + a.id + '">' +
-          (esBienestar ? "Configurar inscripcion &rarr;" : "Inscribirse aqui &rarr;") + "</button>" +
+          (esBienestar ? "Configurar inscripción &rarr;" : "Inscribirse aquí &rarr;") + "</button>" +
       "</div>").join("") : vacio("No hay actividades programadas por ahora.");
 
     cAct.addEventListener("click", (e) => {
@@ -265,7 +265,7 @@ document.addEventListener("DOMContentLoaded", () => {
       } else if (a.formInscripcion) {
         window.open(a.formInscripcion, "_blank", "noopener");
       } else {
-        modalMensaje("Inscripciones no disponibles", "Todavia no hay un formulario de inscripcion para esta actividad. Vuelve pronto.");
+        modalMensaje("Inscripciones no disponibles", "Todavia no hay un formulario de inscripción para esta actividad. Vuelve pronto.");
       }
     });
   }
@@ -287,7 +287,7 @@ document.addEventListener("DOMContentLoaded", () => {
   /* ============================================================
      Animaciones de aparicion al hacer scroll
      ============================================================ */
-  document.querySelectorAll(".lp-seccion-titulo, .lp-split, .lp-tile").forEach(el => el.classList.add("reveal"));
+  document.querySelectorAll(".lp-sección-título, .lp-split, .lp-tile").forEach(el => el.classList.add("reveal"));
   if ("IntersectionObserver" in window) {
     const io = new IntersectionObserver((entradas) => {
       entradas.forEach(en => { if (en.isIntersecting) { en.target.classList.add("visible"); io.unobserve(en.target); } });

@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Gestion de egresados - Comunidad de Egresados CENFOTEC</title>
+  <title>Gestión de egresados - Comunidad de Egresados CENFOTEC</title>
   <link rel="stylesheet" href="css/styles.css">
 </head>
 <body>
@@ -15,10 +15,10 @@
       <div class="barra-superior">
         <div>
           <p class="miga">Inicio / Egresados</p>
-          <h1>Gestion de egresados</h1>
+          <h1>Gestión de egresados</h1>
         </div>
         <div class="usuario">
-          <strong data-usuario-nombre>Maria Alvarado</strong><br>
+          <strong data-usuario-nombre>María Alvarado</strong><br>
           <span class="texto-ayuda" data-usuario-rol>Registro</span>
         </div>
       </div>
@@ -30,7 +30,7 @@
         <form action="#" method="post" id="form-egresado" novalidate>
           <div class="fila-formulario">
             <div class="campo">
-              <label for="ident">Identificacion <span class="obligatorio">*</span></label>
+              <label for="ident">Identificación <span class="obligatorio">*</span></label>
               <input type="text" id="ident" placeholder="1-1234-5678">
             </div>
             <div class="campo">
@@ -40,11 +40,11 @@
           </div>
           <div class="fila-formulario">
             <div class="campo">
-              <label for="correo">Correo electronico <span class="obligatorio">*</span></label>
+              <label for="correo">Correo electrónico <span class="obligatorio">*</span></label>
               <input type="email" id="correo" placeholder="correo@ejemplo.com">
             </div>
             <div class="campo">
-              <label for="telefono">Telefono <span class="obligatorio">*</span></label>
+              <label for="telefono">Teléfono <span class="obligatorio">*</span></label>
               <input type="tel" id="telefono" placeholder="8888-0000">
             </div>
           </div>
@@ -66,15 +66,15 @@
       </div>
 
       <div class="panel">
-        <h2>Importacion masiva mediante CSV</h2>
+        <h2>Importación masiva mediante CSV</h2>
         <div class="zona-subida">
           <p>Selecciona un archivo .csv con los egresados a importar.</p>
           <input type="file" accept=".csv" id="archivo-csv">
         </div>
-        <p class="texto-ayuda">El sistema valida el formato del archivo, los campos obligatorios y los registros duplicados. Columnas: identificacion, nombre, correo, telefono, fecharegistro, empresa.</p>
+        <p class="texto-ayuda">El sistema valida el formato del archivo, los campos obligatorios y los registros duplicados. Columnas: identificación, nombre, correo, teléfono, fecharegistro, empresa.</p>
         <div class="acciones-formulario">
           <a href="#" class="boton boton-secundario boton-pequeno" id="btn-plantilla">Descargar plantilla</a>
-          <button type="button" class="boton" id="btn-importar">Procesar importacion</button>
+          <button type="button" class="boton" id="btn-importar">Procesar importación</button>
         </div>
       </div>
 
@@ -89,7 +89,7 @@
             <label for="f-carrera">Carrera</label>
             <select id="f-carrera">
               <option>Todas</option>
-              <option>Ingenieria del Software</option>
+              <option>Ingeniería del Software</option>
               <option>Ciberseguridad</option>
               <option>Redes y Telecomunicaciones</option>
             </select>
@@ -98,21 +98,21 @@
             <label for="f-escuela">Escuela</label>
             <select id="f-escuela">
               <option>Todas</option>
-              <option>Escuela de Ingenieria del Software</option>
-              <option>Escuela de Computacion</option>
+              <option>Escuela de Ingeniería del Software</option>
+              <option>Escuela de Computación</option>
             </select>
           </div>
           <div class="campo">
             <label for="f-tipo">Tipo de programa</label>
             <select id="f-tipo">
               <option>Todos</option>
-              <option>Tecnico</option>
+              <option>Técnico</option>
               <option>Bachillerato</option>
-              <option>Maestria</option>
+              <option>Maestría</option>
             </select>
           </div>
           <div class="campo">
-            <label for="f-anio">Ano de graduacion</label>
+            <label for="f-anio">Año de graduación</label>
             <input type="number" id="f-anio" placeholder="2026">
           </div>
           <button type="submit" class="boton">Filtrar</button>
@@ -121,18 +121,18 @@
         <table>
           <thead>
             <tr>
-              <th>Identificacion</th>
+              <th>Identificación</th>
               <th>Nombre</th>
               <th>Correo</th>
               <th>Carrera</th>
-              <th>Ano</th>
+              <th>Año</th>
               <th>Estado</th>
               <th>Acciones</th>
             </tr>
           </thead>
           <tbody id="tabla-egresados"></tbody>
         </table>
-        <p class="texto-ayuda">Los egresados se guardan en Local Storage y se mantienen al recargar la pagina.</p>
+        <p class="texto-ayuda">Los egresados se guardan en Local Storage y se mantienen al recargar la página.</p>
       </div>
 
     </main>

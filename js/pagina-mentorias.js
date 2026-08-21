@@ -98,7 +98,7 @@ document.addEventListener("DOMContentLoaded", () => {
     }
     if (!Validar.requerido(especialidades)) { Mensajes.mostrarError("m-especialidades", "Indique al menos una especialidad."); ok = false; }
     if (!Validar.requerido(disponibilidad)) { Mensajes.mostrarError("m-disponibilidad", "Indique la disponibilidad."); ok = false; }
-    if (experiencia === "" || Number(experiencia) < 0) { Mensajes.mostrarError("m-experiencia", "Anos de experiencia invalidos."); ok = false; }
+    if (experiencia === "" || Number(experiencia) < 0) { Mensajes.mostrarError("m-experiencia", "Años de experiencia inválidos."); ok = false; }
     if (!ok) { return; }
 
     const egresado = document.getElementById("m-egresado").value;
@@ -138,7 +138,7 @@ document.addEventListener("DOMContentLoaded", () => {
     const objetivo = document.getElementById("s-objetivo").value;
     const oportunidad = document.getElementById("s-oportunidad").value;
     if (!Validar.requerido(objetivo)) { Mensajes.mostrarError("s-objetivo", "El objetivo es obligatorio."); ok = false; }
-    if (!Validar.requerido(oportunidad)) { Mensajes.mostrarError("s-oportunidad", "Indique la oportunidad de mentoria."); ok = false; }
+    if (!Validar.requerido(oportunidad)) { Mensajes.mostrarError("s-oportunidad", "Indique la oportunidad de mentoría."); ok = false; }
     if (Almacenamiento.obtener(CLAVES.egresados).length === 0) {
       Mensajes.aviso("aviso-mentoria", "Primero deben existir egresados registrados.", "error"); ok = false;
     }
@@ -154,7 +154,7 @@ document.addEventListener("DOMContentLoaded", () => {
       fecha: new Date().toISOString().slice(0, 10),
       estado: "Pendiente"
     });
-    Mensajes.aviso("aviso-mentoria", "Solicitud de mentoria enviada.", "exito");
+    Mensajes.aviso("aviso-mentoria", "Solicitud de mentoría enviada.", "exito");
     formSolicitud.reset();
     refrescar();
   });
@@ -247,7 +247,7 @@ document.addEventListener("DOMContentLoaded", () => {
       observaciones: solicitud.comentarios || "Asignada desde solicitud"
     });
 
-    Mensajes.aviso("aviso-mentoria", "Mentor asignado y mentoria registrada.", "exito");
+    Mensajes.aviso("aviso-mentoria", "Mentor asignado y mentoría registrada.", "exito");
     refrescar();
   });
 
@@ -329,13 +329,13 @@ document.addEventListener("DOMContentLoaded", () => {
 
     if (idMentoriaEdicion) {
       Almacenamiento.actualizar(CLAVES.mentorias, idMentoriaEdicion, datos);
-      Mensajes.aviso("aviso-mentoria", "Mentoria actualizada.", "exito");
+      Mensajes.aviso("aviso-mentoria", "Mentoría actualizada.", "exito");
       idMentoriaEdicion = null;
-      formMentoria.querySelector("button[type=submit]").textContent = "Registrar mentoria";
+      formMentoria.querySelector("button[type=submit]").textContent = "Registrar mentoría";
     } else {
       datos.id = Almacenamiento.generarId();
       Almacenamiento.agregar(CLAVES.mentorias, datos);
-      Mensajes.aviso("aviso-mentoria", "Mentoria registrada.", "exito");
+      Mensajes.aviso("aviso-mentoria", "Mentoría registrada.", "exito");
     }
     formMentoria.reset();
     refrescar();
@@ -347,7 +347,7 @@ document.addEventListener("DOMContentLoaded", () => {
   formMentoria.addEventListener("reset", () => {
     Mensajes.limpiarTodos(formMentoria);
     idMentoriaEdicion = null;
-    formMentoria.querySelector("button[type=submit]").textContent = "Registrar mentoria";
+    formMentoria.querySelector("button[type=submit]").textContent = "Registrar mentoría";
   });
 
   /* ---------- Delegacion de clics (eliminar mentor / editar-eliminar mentoria) ---------- */
@@ -380,9 +380,9 @@ document.addEventListener("DOMContentLoaded", () => {
     }
     if (borraMto) {
       evento.preventDefault();
-      if (confirm("Eliminar esta mentoria?")) {
+      if (confirm("Eliminar esta mentoría?")) {
         Almacenamiento.eliminar(CLAVES.mentorias, borraMto);
-        Mensajes.aviso("aviso-mentoria", "Mentoria eliminada.", "exito");
+        Mensajes.aviso("aviso-mentoria", "Mentoría eliminada.", "exito");
         refrescar();
       }
     }

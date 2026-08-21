@@ -55,10 +55,10 @@ document.addEventListener("DOMContentLoaded", () => {
     ["correo", "telefono", "linkedin", "portafolio"].forEach(id => Mensajes.limpiarError(id));
     let ok = true;
     if (!Validar.correo(document.getElementById("correo").value)) {
-      Mensajes.mostrarError("correo", "Ingrese un correo valido."); ok = false;
+      Mensajes.mostrarError("correo", "Ingrese un correo válido."); ok = false;
     }
     if (!Validar.telefono(document.getElementById("telefono").value)) {
-      Mensajes.mostrarError("telefono", "Telefono de 8 digitos (8888-0000)."); ok = false;
+      Mensajes.mostrarError("telefono", "Teléfono de 8 dígitos (8888-0000)."); ok = false;
     }
     if (!Validar.url(document.getElementById("linkedin").value)) {
       Mensajes.mostrarError("linkedin", "Debe iniciar con http:// o https://"); ok = false;
@@ -80,7 +80,7 @@ document.addEventListener("DOMContentLoaded", () => {
       linkedin: document.getElementById("linkedin").value.trim(),
       portafolio: document.getElementById("portafolio").value.trim()
     });
-    Mensajes.aviso("aviso-perfil", "Informacion actualizada correctamente.", "exito");
+    Mensajes.aviso("aviso-perfil", "Información actualizada correctamente.", "exito");
   });
 
   document.getElementById("btn-cancelar-perfil").addEventListener("click", () => {

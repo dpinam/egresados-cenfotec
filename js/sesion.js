@@ -10,9 +10,9 @@ const Sesion = {
   /* Datos de demostracion para cada rol. En un sistema real
      esto vendria del backend; aqui simula el usuario autenticado. */
   usuariosDemo: {
-    registro:  { rol: "Registro", nombre: "Maria Alvarado", inicio: "inicio.html" },
+    registro:  { rol: "Registro", nombre: "María Alvarado", inicio: "inicio.html" },
     bienestar: { rol: "Bienestar Estudiantil", nombre: "Julia Castro", inicio: "actividades.html" },
-    egresado:  { rol: "Egresado", nombre: "Dylan Pina Moya", inicio: "perfil.html" }
+    egresado:  { rol: "Egresado", nombre: "Dylan Piña Moya", inicio: "perfil.html" }
   },
 
   /* Inicia sesion tomando el rol y el nombre que ingreso la persona.

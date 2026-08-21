@@ -94,10 +94,10 @@ document.addEventListener("DOMContentLoaded", () => {
     const telefono = document.getElementById("telefono").value;
     const fecha = document.getElementById("fecha").value;
 
-    if (!Validar.requerido(ident)) { Mensajes.mostrarError("ident", "La identificacion es obligatoria."); ok = false; }
+    if (!Validar.requerido(ident)) { Mensajes.mostrarError("ident", "La identificación es obligatoria."); ok = false; }
     if (!Validar.requerido(nombre)) { Mensajes.mostrarError("nombre", "El nombre es obligatorio."); ok = false; }
-    if (!Validar.correo(correo)) { Mensajes.mostrarError("correo", "Ingrese un correo valido."); ok = false; }
-    if (!Validar.telefono(telefono)) { Mensajes.mostrarError("telefono", "Telefono de 8 digitos (8888-0000)."); ok = false; }
+    if (!Validar.correo(correo)) { Mensajes.mostrarError("correo", "Ingrese un correo válido."); ok = false; }
+    if (!Validar.telefono(telefono)) { Mensajes.mostrarError("telefono", "Teléfono de 8 dígitos (8888-0000)."); ok = false; }
     if (!Validar.requerido(fecha)) { Mensajes.mostrarError("fecha", "Seleccione la fecha de registro."); ok = false; }
 
     /* Evita identificaciones duplicadas (integridad de datos). */
@@ -105,7 +105,7 @@ document.addEventListener("DOMContentLoaded", () => {
       const repetido = Almacenamiento.obtener(CLAVES.egresados)
         .some(e => e.identificacion === ident.trim() && e.id !== idEnEdicion);
       if (repetido) {
-        Mensajes.mostrarError("ident", "Ya existe un egresado con esa identificacion.");
+        Mensajes.mostrarError("ident", "Ya existe un egresado con esa identificación.");
         ok = false;
       }
     }
@@ -167,7 +167,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
     if (eliminar) {
       evento.preventDefault();
-      if (confirm("Desea eliminar este egresado? Tambien se quitaran sus titulos.")) {
+      if (confirm("Desea eliminar este egresado? Tambien se quitaran sus títulos.")) {
         Almacenamiento.eliminar(CLAVES.egresados, eliminar);
         /* Mantiene la integridad: elimina los titulos asociados. */
         const titulos = Almacenamiento.obtener(CLAVES.titulos).filter(t => t.egresadoId !== eliminar);
@@ -209,7 +209,7 @@ document.addEventListener("DOMContentLoaded", () => {
       return;
     }
     if (!archivo.name.toLowerCase().endsWith(".csv")) {
-      Mensajes.aviso("aviso-egresado", "El archivo debe tener extension .csv.", "error");
+      Mensajes.aviso("aviso-egresado", "El archivo debe tener extensión .csv.", "error");
       return;
     }
 
@@ -265,7 +265,7 @@ document.addEventListener("DOMContentLoaded", () => {
     Almacenamiento.guardar(CLAVES.egresados, existentes);
     refrescar();
     Mensajes.aviso("aviso-egresado",
-      "Importacion terminada: " + agregados + " agregados, " + omitidos + " omitidos (duplicados o invalidos).",
+      "Importación terminada: " + agregados + " agregados, " + omitidos + " omitidos (duplicados o inválidos).",
       agregados > 0 ? "exito" : "error");
   }
 

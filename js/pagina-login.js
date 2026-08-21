@@ -24,11 +24,11 @@ document.addEventListener("DOMContentLoaded", () => {
       valido = false;
     }
     if (!Validar.correo(correo)) {
-      Mensajes.mostrarError("correo", "Ingrese un correo valido.");
+      Mensajes.mostrarError("correo", "Ingrese un correo válido.");
       valido = false;
     }
     if (!Validar.requerido(clave)) {
-      Mensajes.mostrarError("clave", "La contrasena es obligatoria.");
+      Mensajes.mostrarError("clave", "La contraseña es obligatoria.");
       valido = false;
     }
 

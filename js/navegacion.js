@@ -10,11 +10,11 @@ const MENUS = {
     { t: "Portada", h: "index.html" },
     { t: "Panel de inicio", h: "inicio.html" },
     { sec: "Egresados" },
-    { t: "Gestion de egresados", h: "egresados.html" },
-    { t: "Gestion de titulos", h: "titulos.html" },
+    { t: "Gestión de egresados", h: "egresados.html" },
+    { t: "Gestión de títulos", h: "titulos.html" },
     { sec: "Catalogos" },
     { t: "Carreras", h: "carreras.html" },
-    { t: "Escuelas academicas", h: "escuelas.html" }
+    { t: "Escuelas académicas", h: "escuelas.html" }
   ],
   "Bienestar Estudiantil": [
     { t: "Portada", h: "index.html" },
@@ -24,7 +24,7 @@ const MENUS = {
     { t: "Comunidades", h: "comunidades.html" },
     { t: "Comunicados", h: "comunicados.html" },
     { sec: "Programas" },
-    { t: "Mentorias", h: "mentorias.html" },
+    { t: "Mentorías", h: "mentorias.html" },
     { t: "Oportunidades laborales", h: "oportunidades.html" },
     { t: "Consultar egresados", h: "egresados.html" }
   ],
@@ -36,7 +36,7 @@ const MENUS = {
     { t: "Comunidades", h: "comunidades.html" },
     { t: "Comunicados", h: "comunicados.html" },
     { sec: "Programas" },
-    { t: "Mentorias", h: "mentorias.html" },
+    { t: "Mentorías", h: "mentorias.html" },
     { t: "Oportunidades laborales", h: "oportunidades.html" }
   ]
 };
