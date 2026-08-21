@@ -191,6 +191,35 @@ document.addEventListener("DOMContentLoaded", () => {
     });
   }
 
+  /* ---------- Modal: detalle de actividad ---------- */
+  function modalActividad(a) {
+    abrirModal(
+      '<span class="lp-tag">' + a.tipo + "</span>" +
+      "<h3>" + a.titulo + "</h3>" +
+      '<p class="modal-sub">' + fechaLegible(a.fecha) + " &middot; " + a.modalidad + (a.lugar ? " &middot; " + a.lugar : "") + "</p>" +
+      '<p class="modal-dato">' + (a.descripcion || "Sin descripción.") + "</p>" +
+      '<div class="modal-acciones">' +
+        '<button type="button" class="lp-btn lp-btn-linea" id="a-cerrar">Cerrar</button>' +
+        (a.formInscripcion ? '<a class="lp-btn lp-btn-claro" href="' + a.formInscripcion + '" target="_blank" rel="noopener">Inscribirse</a>' : "") +
+      "</div>"
+    );
+    document.getElementById("a-cerrar").addEventListener("click", cerrarModal);
+  }
+
+  /* ---------- Modal: detalle de comunidad ---------- */
+  function modalComunidad(c) {
+    abrirModal(
+      '<span class="lp-tag">' + c.area + "</span>" +
+      "<h3>" + c.nombre + "</h3>" +
+      '<p class="modal-sub">' + c.miembros + " miembros &middot; " + c.estado + "</p>" +
+      '<p class="modal-dato">' + (c.descripcion || "Comunidad profesional de egresados que comparten un area de especialidad.") + "</p>" +
+      '<div class="modal-acciones">' +
+        '<button type="button" class="lp-btn lp-btn-linea" id="cm-cerrar">Cerrar</button>' +
+      "</div>"
+    );
+    document.getElementById("cm-cerrar").addEventListener("click", cerrarModal);
+  }
+
   /* ============================================================
      RENDER de las secciones dinamicas
      ============================================================ */
@@ -243,13 +272,20 @@ document.addEventListener("DOMContentLoaded", () => {
   if (cCom2) {
     const lista = Almacenamiento.obtener(CLAVES.comunidades).filter(c => c.estado === "Activa").slice(0, 6);
     cCom2.innerHTML = lista.length ? lista.map((c, i) =>
-      '<a class="lp-card clickable reveal ' + ("d" + (i % 3 + 1)) + '" href="comunidades.html" style="text-decoration:none;display:block">' +
+      '<div class="lp-card clickable reveal ' + ("d" + (i % 3 + 1)) + '" data-com="' + c.id + '">' +
         '<span class="lp-tag">' + c.area + "</span>" +
         "<h3>" + c.nombre + "</h3>" +
         "<p>" + (c.descripcion || "Comunidad profesional de egresados.") + "</p>" +
         '<div class="lp-meta">' + c.miembros + " miembros</div>" +
-        '<span class="lp-card-accion">' + (esAdmin ? "Gestionar &rarr;" : "Unirme &rarr;") + "</span>" +
-      "</a>").join("") : vacio("Pronto se abriran nuevas comunidades.");
+        '<span class="lp-card-accion">' + (esAdmin ? "Gestionar &rarr;" : "Ver informacion &rarr;") + "</span>" +
+      "</div>").join("") : vacio("Pronto se abriran nuevas comunidades.");
+
+    cCom2.addEventListener("click", (e) => {
+      const card = e.target.closest("[data-com]"); if (!card) { return; }
+      if (esAdmin) { window.location.href = "comunidades.html"; return; }
+      const c = Almacenamiento.obtener(CLAVES.comunidades).find(x => x.id === card.dataset.com);
+      if (c) { modalComunidad(c); }
+    });
   }
 
   /* Actividades (con boton de inscripcion) */
@@ -258,7 +294,7 @@ document.addEventListener("DOMContentLoaded", () => {
     const lista = Almacenamiento.obtener(CLAVES.actividades).filter(a => a.estado === "Programada")
       .sort((a, b) => a.fecha.localeCompare(b.fecha)).slice(0, 3);
     cAct.innerHTML = lista.length ? lista.map((a, i) =>
-      '<div class="lp-card reveal ' + ("d" + (i % 3 + 1)) + '">' +
+      '<div class="lp-card clickable reveal ' + ("d" + (i % 3 + 1)) + '" data-act="' + a.id + '">' +
         '<span class="lp-tag">' + a.tipo + "</span>" +
         "<h3>" + a.titulo + "</h3>" +
         "<p>" + a.descripcion + "</p>" +
@@ -268,16 +304,23 @@ document.addEventListener("DOMContentLoaded", () => {
       "</div>").join("") : vacio("No hay actividades programadas por ahora.");
 
     cAct.addEventListener("click", (e) => {
-      const btn = e.target.closest("[data-inscribir]"); if (!btn) { return; }
-      const a = Almacenamiento.obtener(CLAVES.actividades).find(x => x.id === btn.dataset.inscribir);
-      if (!a) { return; }
-      if (esBienestar) {
-        modalConfigInscripcion(a);
-      } else if (a.formInscripcion) {
-        window.open(a.formInscripcion, "_blank", "noopener");
-      } else {
-        modalMensaje("Inscripciones no disponibles", "Todavia no hay un formulario de inscripción para esta actividad. Vuelve pronto.");
+      const btn = e.target.closest("[data-inscribir]");
+      if (btn) {
+        const a = Almacenamiento.obtener(CLAVES.actividades).find(x => x.id === btn.dataset.inscribir);
+        if (!a) { return; }
+        if (esBienestar) {
+          modalConfigInscripcion(a);
+        } else if (a.formInscripcion) {
+          window.open(a.formInscripcion, "_blank", "noopener");
+        } else {
+          modalMensaje("Inscripciones no disponibles", "Todavia no hay un formulario de inscripción para esta actividad. Vuelve pronto.");
+        }
+        return;
       }
+      /* Clic en el resto de la tarjeta: abre el detalle de la actividad. */
+      const card = e.target.closest("[data-act]"); if (!card) { return; }
+      const act = Almacenamiento.obtener(CLAVES.actividades).find(x => x.id === card.dataset.act);
+      if (act) { modalActividad(act); }
     });
   }
 
@@ -298,7 +341,7 @@ document.addEventListener("DOMContentLoaded", () => {
   /* ============================================================
      Animaciones de aparicion al hacer scroll
      ============================================================ */
-  document.querySelectorAll(".lp-sección-título, .lp-split, .lp-tile").forEach(el => el.classList.add("reveal"));
+  document.querySelectorAll(".lp-seccion-titulo, .lp-split, .lp-tile").forEach(el => el.classList.add("reveal"));
   if ("IntersectionObserver" in window) {
     const io = new IntersectionObserver((entradas) => {
       entradas.forEach(en => { if (en.isIntersecting) { en.target.classList.add("visible"); io.unobserve(en.target); } });
