@@ -105,6 +105,54 @@
         </table>
       </div>
 
+      <div class="panel">
+        <h2>Solicitar registro de un titulo</h2>
+        <p class="texto-ayuda">Si obtuviste un titulo que aun no aparece, envia la solicitud al Departamento de Registro.</p>
+        <form action="#" method="post" id="form-solicitud-titulo" novalidate>
+          <div class="fila-formulario">
+            <div class="campo">
+              <label for="st-tipo">Tipo de programa <span class="obligatorio">*</span></label>
+              <select id="st-tipo">
+                <option>Tecnico</option>
+                <option>Bachillerato</option>
+                <option>Maestria</option>
+              </select>
+            </div>
+            <div class="campo">
+              <label for="st-anio">Año de graduacion <span class="obligatorio">*</span></label>
+              <input type="number" id="st-anio" placeholder="2026" min="1990" max="2026">
+            </div>
+          </div>
+          <div class="fila-formulario">
+            <div class="campo">
+              <label for="st-carrera">Carrera <span class="obligatorio">*</span></label>
+              <input type="text" id="st-carrera" placeholder="Ej. Ingenieria del Software">
+            </div>
+            <div class="campo">
+              <label for="st-escuela">Escuela academica <span class="obligatorio">*</span></label>
+              <input type="text" id="st-escuela" placeholder="Ej. Escuela de Ingenieria del Software">
+            </div>
+          </div>
+          <div class="acciones-formulario">
+            <button type="reset" class="boton boton-secundario">Limpiar</button>
+            <button type="submit" class="boton">Enviar solicitud</button>
+          </div>
+        </form>
+
+        <table>
+          <thead>
+            <tr>
+              <th>Tipo</th>
+              <th>Carrera</th>
+              <th>Escuela</th>
+              <th>Año</th>
+              <th>Estado</th>
+            </tr>
+          </thead>
+          <tbody id="tabla-solicitudes-titulo"></tbody>
+        </table>
+      </div>
+
     </main>
   </div>
 

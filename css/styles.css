@@ -342,6 +342,14 @@ body.landing { background: #0a0a0b; color: #e9e9ec; }
 .lp-footer .lp-links a:hover { color: #fff; }
 .lp-footer .lp-fcol h4 { color: #fff; font-size: 0.8rem; text-transform: uppercase; letter-spacing: .1em; margin: 0 0 12px; }
 
+/* Permisos: el rol Egresado solo puede ver (oculta formularios y acciones de administracion) */
+.rol-egresado .solo-admin { display: none !important; }
+.rol-egresado [data-editar],
+.rol-egresado [data-eliminar],
+.rol-egresado [data-borra-mentor],
+.rol-egresado [data-edita-mto],
+.rol-egresado [data-borra-mto] { display: none !important; }
+
 /* Animacion de aparicion al hacer scroll */
 .reveal { opacity: 0; transform: translateY(26px); transition: opacity .7s ease, transform .7s cubic-bezier(.2,.7,.2,1); }
 .reveal.visible { opacity: 1; transform: none; }

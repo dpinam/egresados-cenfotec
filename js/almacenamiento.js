@@ -74,5 +74,6 @@ const CLAVES = {
   mentorias: "mentorias",
   oportunidades: "oportunidades",
   comunicados: "comunicados",
+  solicitudesTitulo: "solicitudesTitulo",
   sesion: "sesionActual"
 };

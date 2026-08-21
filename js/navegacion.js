@@ -47,6 +47,8 @@ document.addEventListener("DOMContentLoaded", () => {
 
   const sesion = (typeof Sesion !== "undefined") ? Sesion.actual() : null;
   const rol = sesion ? sesion.rol : "Registro";
+  /* El egresado solo puede ver: se activa el modo de solo lectura. */
+  if (rol === "Egresado") { document.body.classList.add("rol-egresado"); }
   const items = MENUS[rol] || MENUS["Registro"];
   const paginaActual = window.location.pathname.split("/").pop() || "index.html";
 

@@ -13,7 +13,18 @@ document.addEventListener("DOMContentLoaded", () => {
   const sesion = (typeof Sesion !== "undefined") ? Sesion.actual() : null;
   const esAdmin = !!sesion && (sesion.rol === "Registro" || sesion.rol === "Bienestar Estudiantil");
   const esBienestar = !!sesion && sesion.rol === "Bienestar Estudiantil";
+  const esEgresado = !!sesion && sesion.rol === "Egresado";
   function urlValida(v) { return /^https?:\/\/.+/i.test((v || "").trim()); }
+
+  /* El egresado no administra: se oculta la seccion academica (solo Registro). */
+  if (esEgresado) {
+    const acad = document.getElementById("academico");
+    if (acad) { acad.style.display = "none"; }
+    const linkAcad = document.querySelector('.lp-nav a[href="#academico"]');
+    if (linkAcad) { linkAcad.style.display = "none"; }
+    document.querySelectorAll('#accesos a[href="egresados.html"], #accesos a[href="titulos.html"]')
+      .forEach(el => { el.style.display = "none"; });
+  }
 
   /* ---------- Encabezado al hacer scroll ---------- */
   const header = document.getElementById("lp-header");

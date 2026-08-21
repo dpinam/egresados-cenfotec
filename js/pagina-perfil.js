@@ -88,6 +88,62 @@ document.addEventListener("DOMContentLoaded", () => {
     ["correo", "telefono", "linkedin", "portafolio"].forEach(id => Mensajes.limpiarError(id));
   });
 
+  /* ---------- Solicitud de registro de un titulo ---------- */
+  const formSolTitulo = document.getElementById("form-solicitud-titulo");
+
+  function pintarSolicitudesTitulo() {
+    const cuerpo = document.getElementById("tabla-solicitudes-titulo");
+    if (!cuerpo) { return; }
+    const lista = Almacenamiento.obtener(CLAVES.solicitudesTitulo).filter(s => s.egresadoId === ID_EGRESADO);
+    cuerpo.innerHTML = "";
+    if (lista.length === 0) {
+      cuerpo.innerHTML = '<tr class="fila-vacia"><td colspan="5">No tienes solicitudes de titulo.</td></tr>';
+      return;
+    }
+    lista.forEach(s => {
+      const fila = document.createElement("tr");
+      fila.innerHTML =
+        "<td>" + s.tipo + "</td>" +
+        "<td>" + s.carrera + "</td>" +
+        "<td>" + s.escuela + "</td>" +
+        "<td>" + s.anio + "</td>" +
+        '<td><span class="estado estado-alerta">' + s.estado + "</span></td>";
+      cuerpo.appendChild(fila);
+    });
+  }
+
+  if (formSolTitulo) {
+    formSolTitulo.addEventListener("submit", (evento) => {
+      evento.preventDefault();
+      Mensajes.limpiarTodos(formSolTitulo);
+      let ok = true;
+      const carrera = document.getElementById("st-carrera").value;
+      const escuela = document.getElementById("st-escuela").value;
+      const anio = document.getElementById("st-anio").value;
+      if (!Validar.requerido(carrera)) { Mensajes.mostrarError("st-carrera", "Indique la carrera."); ok = false; }
+      if (!Validar.requerido(escuela)) { Mensajes.mostrarError("st-escuela", "Indique la escuela."); ok = false; }
+      if (!Validar.anio(anio)) { Mensajes.mostrarError("st-anio", "Ingrese un año valido (1990-2026)."); ok = false; }
+      if (!ok) { return; }
+
+      Almacenamiento.agregar(CLAVES.solicitudesTitulo, {
+        id: Almacenamiento.generarId(),
+        egresadoId: ID_EGRESADO,
+        tipo: document.getElementById("st-tipo").value,
+        carrera: carrera.trim(),
+        escuela: escuela.trim(),
+        anio: Number(anio),
+        estado: "Pendiente",
+        fecha: new Date().toISOString().slice(0, 10)
+      });
+      Mensajes.aviso("aviso-perfil", "Solicitud de titulo enviada al Departamento de Registro.", "exito");
+      formSolTitulo.reset();
+      pintarSolicitudesTitulo();
+    });
+    ["st-carrera", "st-escuela", "st-anio"].forEach(id =>
+      document.getElementById(id).addEventListener("input", () => Mensajes.limpiarError(id)));
+  }
+
   cargarDatos();
   pintarTitulos();
+  pintarSolicitudesTitulo();
 });
